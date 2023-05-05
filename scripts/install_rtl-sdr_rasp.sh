@@ -11,4 +11,4 @@ make
 make install 
 ldconfig
 cp ../rtl-sdr.rules /etc/udev/rules.d
-ln -s /usr/local/bin/rtl-sdr /usr/bin/rtl-sdr
+ln -s /usr/bin/rtl-sdr /usr/local/bin/rtl-sdr 
