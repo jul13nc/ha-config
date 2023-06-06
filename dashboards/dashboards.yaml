@@ -32,8 +32,20 @@ views:
         entities:
           - sensor.temp_bureau
           - sensor.temp_salle_jeux
-      - show_current: true
-        show_forecast: true
-        type: weather-forecast
+      - type: custom:meteofrance-weather-card
         entity: weather.mionnay
-        theme: minimalist-mobile
+        number_of_forecasts: '5'
+        name: Mionnay
+        current: true
+        one_hour_forecast: true
+        forecast: true
+        details: true
+        alert_forecast: true
+        animated_icons: true
+        cloudCoverEntity: sensor.mionnay_cloud_cover
+        rainChanceEntity: sensor.mionnay_rain_chance
+        freezeChanceEntity: sensor.mionnay_freeze_chance
+        snowChanceEntity: sensor.mionnay_snow_chance
+        uvEntity: sensor.mionnay_uv
+        rainForecastEntity: sensor.mionnay_next_rain
+        alertEntity: sensor.01_weather_alert
