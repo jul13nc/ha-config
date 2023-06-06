@@ -18,20 +18,27 @@ views:
       - type: custom:mini-graph-card
         name: Chambres
         entities:
-          - sensor.temp_ch_gaetan
-          - sensor.temperature_ch_romain
-          - sensor.temperature_ch_parents
+          - entity: sensor.th_ch_gaetan_temperature
+            name: Gaetan 
+          - entity: sensor.th_ch_romain_temperature
+            name: Romain
+          - entity: sensor.th_ch_parents_temperature
+            name: Parents
       - type: custom:mini-graph-card
         entities:
-          - sensor.temp_salon
+          - entity: sensor.th_salon_temperature
+            name: Salon
       - type: custom:mini-graph-card
         entities:
-          - sensor.temp_ext
+          - entity: sensor.th_ext_temperature
+            name: Exterieur
       - type: custom:mini-graph-card
         name: Autres pièces
         entities:
-          - sensor.temp_bureau
-          - sensor.temp_salle_jeux
+          - entity: sensor.th_bureau_temperature
+            name: Bureau
+          - entity: sensor.th_salle_jeux_temperature
+            name: Salle Jeux
       - type: custom:meteofrance-weather-card
         entity: weather.mionnay
         number_of_forecasts: '5'
