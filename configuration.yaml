@@ -1,0 +1,121 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - !secret proxy_ip
+
+lovelace:
+  mode: storage
+  # Add yaml dashboards
+  dashboards:
+    lovelace-yaml:
+      mode: yaml
+      title: Temperatures
+      icon: mdi:temperature-celsius
+      show_in_sidebar: true
+      filename: dashboards/dashboards.yaml
+      
+# RFLink Integration
+rflink:
+  port: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
+  ignore_devices:
+    - alectov1*
+    - auriol*
+    - bl99*
+    - globaltronics
+    - digitech*
+    - fineoffset*
+    - mebus*
+sensor:
+  - platform: rflink
+    automatic_add: true
+    
+template:
+  - sensor:
+        - name: 'Temp Salle Jeux'
+          unique_id: 'temperature_salle_jeux'
+          state_class: measurement
+          device_class: temperature
+          state: "{{ states('sensor.alectov4_540a_temp')|float - 0.3}}"
+          attributes:
+            humidity: "{{ states('sensor.alectov4_540a_hum') }}"
+            update_time: "{{ states('sensor.alectov4_540a_update_time')}}"
+  - sensor:
+        - name: 'Temp Bureau'
+          unique_id: 'temperature_bureau'
+          state_class: measurement
+          device_class: temperature
+          state: "{{ states('sensor.alectov4_56da_temp')|float - 0.4}}"
+          attributes:
+            humidity: "{{ states('sensor.alectov4_56da_hum') }}"
+            update_time: "{{ states('sensor.alectov4_56da_update_time')}}"
+  - sensor:
+        - name: 'Temp Ch Parents'
+          unique_id: 'temperature_ch_parents'
+          state_class: measurement
+          device_class: temperature
+          state: "{{ states('sensor.alectov4_50e8_temp')|float - 0.1}}"
+          attributes:
+            humidity: "{{ states('sensor.alectov4_50e8_hum') }}"
+            update_time: "{{ states('sensor.alectov4_50e8_update_time')}}"
+  - sensor:
+        - name: 'Temp Ch Gaetan'
+          unique_id: 'temperature_ch_gaetan'
+          state_class: measurement
+          device_class: temperature
+          state: "{{ states('sensor.oregontemp_8c10_temp')|float + 0.5}}"
+          attributes:
+            battery: "{{ states('sensor.oregontemp_8c10_bat') }}"
+            update_time: "{{ states('sensor.oregontemp_8c10_update_time')}}"
+  - sensor:
+        - name: "Temp Ch Romain"
+          unique_id: 'temperature_ch_romain'
+          device_class: temperature
+          state_class: measurement
+          state: "{{ states('sensor.oregontemp_ab10_temp')|float + 0.3}}"
+          attributes:
+            battery: "{{ states('sensor.oregontemp_ab10_bat') }}"
+            update_time: "{{ states('sensor.oregontemp_ab10_update_time')}}"
+  - sensor:
+        - name: "Temp Salon"
+          unique_id: 'temperature_salon'
+          device_class: temperature
+          state_class: measurement
+          state: "{{ states('sensor.oregontemphygro_2d79_temp')|float - 0.1}}"
+          attributes:
+            battery: "{{ states('sensor.oregontemphygro_2d79_bat') }}"
+            humidity: "{{ states('sensor.oregontemphygro_2d79_hum') }}"
+            update_time: "{{ states('sensor.oregontemphygro_2d79_update_time')}}"
+  - sensor:
+        - name: "Temp Ext"
+          unique_id: 'temperature_ext'
+          device_class: temperature
+          state_class: measurement
+          state: "{{ states('sensor.alectov4_5378_temp')|float + 0.4}}"
+          attributes:
+            humidity: "{{ states('alectov4_5378_hum') }}"
+            update_time: "{{ states('sensor.alectov4_5378_update_time')}}"
+          
+calendar:
+  - platform: caldav
+    username: !secret syno_user
+    password: !secret syno_password
+    url: !secret caldav_url
+
+
+

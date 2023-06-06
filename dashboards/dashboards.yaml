@@ -1,0 +1,39 @@
+views:
+  - title: Home
+    cards:
+      - type: custom:button-card
+        name: Lancer aspirateur
+        size: 10%
+        entity: vacuum.robot_aspirateur
+        tap_action:
+          action: call-service
+          entity: vacuum.robot_aspirateur
+          confirmation:
+            text: >-
+              [[[ return `Etes vous sur de vouloir démarrer
+              ${entity.attributes.friendly_name}?` ]]]
+          service: vacuum.start
+          service_data:
+            entity_id: entity
+      - type: custom:mini-graph-card
+        name: Chambres
+        entities:
+          - sensor.temp_ch_gaetan
+          - sensor.temperature_ch_romain
+          - sensor.temperature_ch_parents
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.temp_salon
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.temp_ext
+      - type: custom:mini-graph-card
+        name: Autres pièces
+        entities:
+          - sensor.temp_bureau
+          - sensor.temp_salle_jeux
+      - show_current: true
+        show_forecast: true
+        type: weather-forecast
+        entity: weather.mionnay
+        theme: minimalist-mobile
