@@ -51,5 +51,10 @@ calendar:
     password: !secret syno_password
     url: !secret caldav_url
 
-
-
+template:
+  - binary_sensor:
+      - name: "Washing Machine"
+        delay_off:
+          minutes: 5
+        state: >
+          {{ states('sensor.prisemal_power')|float > 0 }}

@@ -184,19 +184,14 @@
     data: {}
   mode: single
 - id: '1685895561368'
-  alias: MAL_Arrêt
+  alias: MAL_Notif_Arrêt
   description: ''
   trigger:
-  - type: power
-    platform: device
-    device_id: be3d5bffe2ffcacd40fa15b2a559e04b
-    entity_id: sensor.prisemal_power
-    domain: sensor
-    below: 2
-    for:
-      hours: 0
-      minutes: 5
-      seconds: 0
+  - platform: state
+    entity_id:
+    - binary_sensor.washing_machine
+    from: 'on'
+    to: 'off'
   condition: []
   action:
   - service: notify.mobile_app_sm_a505fn
