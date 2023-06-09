@@ -1,23 +1,70 @@
 - id: '1685685233719'
   name: Lumière TV Nocturne
   entities:
-    switch.priselampesalon:
-      friendly_name: PriseLampeSalon
-      state: 'on'
-    select.priselampesalon_indicator_mode:
-      options:
-      - 'off'
-      - off/on
-      - on/off
-      - 'on'
-      friendly_name: PriseLampeSalon indicator mode
-      state: off/on
-    lock.priselampesalon_child_lock:
-      friendly_name: PriseLampeSalon child lock
-      supported_features: 0
-      state: unlocked
     switch.multiprisetv_l2:
       friendly_name: multiprisetv_lumiere
+      state: 'on'
+    light.lampecanape:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4000
+      min_mireds: 250
+      max_mireds: 454
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 26
+      color_temp_kelvin: 2808
+      color_temp: 356
+      hs_color:
+      - 28.172
+      - 62.378
+      rgb_color:
+      - 255
+      - 170
+      - 95
+      xy_color:
+      - 0.516
+      - 0.386
+      friendly_name: LampeCanape
+      supported_features: 44
+      state: 'on'
+    light.lampetele:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4000
+      min_mireds: 250
+      max_mireds: 454
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      friendly_name: LampeTele
+      supported_features: 44
+      color_mode: color_temp
+      brightness: 26
+      color_temp_kelvin: 2732
+      color_temp: 366
+      hs_color:
+      - 28.327
+      - 64.71
+      rgb_color:
+      - 255
+      - 167
+      - 89
+      xy_color:
+      - 0.524
+      - 0.387
       state: 'on'
   icon: mdi:lightbulb-group
   metadata:
