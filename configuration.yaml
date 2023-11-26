@@ -29,22 +29,13 @@ lovelace:
       icon: mdi:temperature-celsius
       show_in_sidebar: true
       filename: dashboards/dashboards.yaml
+
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: !secret configurator_url
       
-# RFLink Integration
-rflink:
-  port: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
-  ignore_devices:
-    - alectov1*
-    - auriol*
-    - bl99*
-    - globaltronics
-    - digitech*
-    - fineoffset*
-    - mebus*
-sensor:
-  - platform: rflink
-    automatic_add: true
-    
 calendar:
   - platform: caldav
     username: !secret syno_user
@@ -56,5 +47,14 @@ template:
       - name: "Washing Machine"
         delay_off:
           minutes: 5
+        device_class: running
         state: >
           {{ states('sensor.prisemal_power')|float > 0 }}
+  - sensor:
+      - name: Sun Elevation
+        unit_of_measurement: "°"
+        state: "{{ '%+.1f'|format(state_attr('sun.sun', 'elevation')) }}"
+  - sensor:
+      - name: Sun Azimuth
+        unit_of_measurement: "°"
+        state: "{{ '%+.1f'|format(state_attr('sun.sun', 'azimuth')) }}"

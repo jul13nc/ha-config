@@ -73,23 +73,6 @@
 - id: '1685890381553'
   name: Lumière Eteintes
   entities:
-    light.lampebuffet:
-      min_color_temp_kelvin: 2202
-      max_color_temp_kelvin: 4000
-      min_mireds: 250
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - color_temp
-      friendly_name: LampeBuffet
-      supported_features: 44
-      state: 'off'
     light.lampecanape:
       min_color_temp_kelvin: 2202
       max_color_temp_kelvin: 4000
@@ -104,24 +87,15 @@
       - stop_effect
       supported_color_modes:
       - color_temp
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      effect:
       friendly_name: LampeCanape
-      supported_features: 44
-      state: 'off'
-    light.lampeflechettes:
-      min_color_temp_kelvin: 2202
-      max_color_temp_kelvin: 4000
-      min_mireds: 250
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - color_temp
-      friendly_name: LampeFlechettes
       supported_features: 44
       state: 'off'
     light.lampetele:
@@ -138,6 +112,14 @@
       - stop_effect
       supported_color_modes:
       - color_temp
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      effect:
       friendly_name: LampeTele
       supported_features: 44
       state: 'off'
@@ -150,10 +132,10 @@
       - off/on
       - on/off
       - 'on'
-      friendly_name: PriseLampeSalon indicator mode
+      friendly_name: PriseLampeSalon Indicator mode
       state: off/on
     lock.priselampesalon_child_lock:
-      friendly_name: PriseLampeSalon child lock
+      friendly_name: PriseLampeSalon Child lock
       supported_features: 0
       state: unlocked
     switch.multiprisetv_l2:

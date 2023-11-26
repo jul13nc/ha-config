@@ -21,3 +21,14 @@ ambiance_tv:
         entity_id: scene.lumiere_eteintes
       metadata: {}
   mode: single
+notif_parent_maison:
+  alias: Notif Parent Maison
+  sequence:
+  - condition: state
+    entity_id: person.julien
+    state: home
+  - service: notify.mobile_app_sm_a505fn
+    data:
+      message: '{{ notif_text }}'
+  mode: queued
+  icon: mdi:account-group
