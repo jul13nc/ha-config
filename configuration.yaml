@@ -28,14 +28,15 @@ lovelace:
       title: Temperatures
       icon: mdi:temperature-celsius
       show_in_sidebar: true
-      filename: dashboards/dashboards.yaml
+      filename: dashboards/dashboards.yaml 
+    config-yaml:
+      mode: yaml
+      title: Config
+      icon: mdi:hammer-wrench
+      show_in_sidebar: true
+      filename: dashboards/config.yaml
+      require_admin: true
 
-panel_iframe:
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: !secret configurator_url
-      
 calendar:
   - platform: caldav
     username: !secret syno_user

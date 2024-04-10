@@ -1,14 +1,3 @@
-- id: '1683021101609'
-  alias: FullBackup_2am
-  description: ''
-  trigger:
-  - platform: time
-    at: 02:00:00
-  condition: []
-  action:
-  - service: backup.create
-    data: {}
-  mode: single
 - id: '1683835557958'
   alias: Allumer TV
   description: ''

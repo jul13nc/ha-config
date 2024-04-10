@@ -6,10 +6,10 @@ ambiance_tv:
     after: sunset
   - if:
     - condition: device
+      device_id: 310431d68dafb9ebcc0d9691c14bd65b
+      domain: media_player
+      entity_id: cb510071aa3b9ffed27491191571435e
       type: is_on
-      device_id: a744a962360332b9705e8f8af18a2eab
-      entity_id: remote.freebox_player_pop
-      domain: remote
     then:
     - service: scene.turn_on
       target:
