@@ -1,0 +1,34 @@
+views:
+  - title: Home
+    cards:
+      - type: custom:mushroom-cover-card
+        entity: cover.rolling_shutter_window_covering
+        fill_container: false
+        show_position_control: true
+        show_tilt_position_control: false
+        show_buttons_control: true
+      - type: custom:mushroom-cover-card
+        entity: cover.rolling_shutter_window_covering_2
+        show_position_control: false
+        show_buttons_control: true
+        show_tilt_position_control: false
+      - type: custom:mushroom-cover-card
+        entity: cover.rolling_shutter_window_covering_3
+        show_position_control: false
+        show_buttons_control: true
+        show_tilt_position_control: false
+      - type: custom:mushroom-cover-card
+        entity: cover.rolling_shutter_window_covering_4
+        show_position_control: false
+        show_buttons_control: true
+        show_tilt_position_control: false
+      - type: custom:mushroom-cover-card
+        entity: cover.rolling_shutter_window_covering_5
+        show_position_control: true
+        show_buttons_control: true
+        show_tilt_position_control: false
+      - type: custom:mushroom-cover-card
+        entity: cover.rolling_shutter_window_covering_6
+        show_position_control: true
+        show_buttons_control: true
+        show_tilt_position_control: false

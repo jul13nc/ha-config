@@ -29,6 +29,24 @@ lovelace:
       icon: mdi:temperature-celsius
       show_in_sidebar: true
       filename: dashboards/dashboards.yaml 
+    lights-yaml:
+      mode: yaml
+      title: Lumières
+      icon: mdi:lightbulb-multiple-outline
+      show_in_sidebar: true
+      filename: dashboards/lights.yaml
+    temp-yaml:
+      mode: yaml
+      title: Températures
+      icon: mdi:lightbulb-multiple-outline
+      show_in_sidebar: true
+      filename: dashboards/temp-global.yaml
+    covers-yaml:
+      mode: yaml
+      title: Volets
+      icon: mdi:window-shutter
+      show_in_sidebar: true
+      filename: dashboards/covers.yaml
     config-yaml:
       mode: yaml
       title: Config

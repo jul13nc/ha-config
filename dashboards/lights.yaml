@@ -1,0 +1,21 @@
+views:
+  - title: Home
+    cards:
+      - type: custom:mushroom-light-card
+        entity: light.lampetele
+        fill_container: true
+      - type: custom:mushroom-light-card
+        entity: light.lampecanape
+        fill_container: true
+      - type: custom:mushroom-light-card
+        entity: light.lampeflechettes
+        fill_container: true
+      - type: custom:mushroom-light-card
+        entity: light.lampebuffet
+        fill_container: true
+      - type: custom:button-card
+        entity: switch.priselampesalon
+        size: 10%
+      - type: custom:button-card
+        entity: switch.multiprisetv_l2
+        size: 10%
