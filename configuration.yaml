@@ -23,30 +23,12 @@ lovelace:
   mode: storage
   # Add yaml dashboards
   dashboards:
-    lovelace-yaml:
-      mode: yaml
-      title: Temperatures
-      icon: mdi:temperature-celsius
-      show_in_sidebar: true
-      filename: dashboards/dashboards.yaml 
-    lights-yaml:
-      mode: yaml
-      title: Lumières
-      icon: mdi:lightbulb-multiple-outline
-      show_in_sidebar: true
-      filename: dashboards/lights.yaml
     temp-yaml:
       mode: yaml
-      title: Températures
+      title: Dashboard
       icon: mdi:lightbulb-multiple-outline
       show_in_sidebar: true
-      filename: dashboards/temp-global.yaml
-    covers-yaml:
-      mode: yaml
-      title: Volets
-      icon: mdi:window-shutter
-      show_in_sidebar: true
-      filename: dashboards/covers.yaml
+      filename: dashboards/global.yaml
     config-yaml:
       mode: yaml
       title: Config

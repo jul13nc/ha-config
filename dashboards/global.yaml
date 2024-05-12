@@ -1,0 +1,172 @@
+views:
+  - title: Home
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: horizontal-stack
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:mini-graph-card
+                  name: Salon
+                  height: 50
+                  entities:
+                    - entity: sensor.th_salon_temperature
+                - type: custom:mushroom-cover-card
+                  entity: cover.rolling_shutter_window_covering
+                  fill_container: false
+                  show_position_control: false
+                  show_tilt_position_control: false
+                  show_buttons_control: true
+                  primary_info: none
+                  secondary_info: none
+                  icon_type: none
+                  layout: horizontal
+                - type: custom:button-card
+                  entity: switch.priselampesalon
+                  icon: mdi:lightbulb
+                  name: Lampe Prise
+                  size: 20%
+                  layout: icon_name
+                - type: custom:button-card
+                  entity: switch.multiprisetv_l2
+                  icon: mdi:lightbulb
+                  name: Arrière TV
+                  size: 20%
+                  layout: icon_name
+            - type: vertical-stack
+              cards:
+                - type: custom:mushroom-light-card
+                  entity: light.lampetele
+                - type: custom:mushroom-light-card
+                  entity: light.lampecanape
+                - type: custom:mushroom-light-card
+                  entity: light.lampeflechettes
+                - type: custom:mushroom-light-card
+                  entity: light.lampebuffet
+        - type: horizontal-stack
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:mini-graph-card
+                  name: Gaetan
+                  height: 50
+                  entities:
+                    - entity: sensor.th_ch_gaetan_temperature
+                - type: custom:mushroom-cover-card
+                  entity: cover.rolling_shutter_window_covering_4
+                  show_position_control: false
+                  show_buttons_control: true
+                  show_tilt_position_control: false
+                  primary_info: none
+                  secondary_info: none
+                  icon_type: none
+                  layout: horizontal
+            - type: vertical-stack
+              cards:
+                - type: custom:mini-graph-card
+                  name: Romain
+                  height: 50
+                  entities:
+                    - entity: sensor.th_ch_romain_temperature
+                - type: custom:mushroom-cover-card
+                  entity: cover.rolling_shutter_window_covering_3
+                  show_position_control: false
+                  show_buttons_control: true
+                  show_tilt_position_control: false
+                  primary_info: none
+                  secondary_info: none
+                  icon_type: none
+                  layout: horizontal
+            - type: vertical-stack
+              cards:
+                - type: custom:mini-graph-card
+                  name: Parents
+                  height: 50
+                  entities:
+                    - entity: sensor.th_ch_parents_temperature
+                - type: custom:mushroom-cover-card
+                  entity: cover.rolling_shutter_window_covering_6
+                  show_position_control: true
+                  show_buttons_control: true
+                  show_tilt_position_control: false
+                  primary_info: none
+                  secondary_info: none
+                  icon_type: none
+                  layout: horizontal
+      - type: horizontal-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Bureau
+                height: 50
+                entities:
+                  - entity: sensor.th_bureau_temperature
+              - type: custom:mushroom-cover-card
+                entity: cover.rolling_shutter_window_covering_2
+                show_position_control: false
+                show_buttons_control: true
+                show_tilt_position_control: false
+                primary_info: none
+                secondary_info: none
+                icon_type: none
+                layout: horizontal
+          - type: vertical-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: Salle Jeux
+                height: 50
+                entities:
+                  - entity: sensor.th_salle_jeux_temperature
+              - type: custom:mushroom-cover-card
+                entity: cover.rolling_shutter_window_covering_5
+                show_position_control: true
+                show_buttons_control: true
+                show_tilt_position_control: false
+                primary_info: none
+                secondary_info: none
+                icon_type: none
+                layout: horizontal
+      - type: horizontal-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: custom:mini-graph-card
+                name: EXT
+                height: 80
+                entities:
+                  - entity: sensor.th_ext_temperature
+              - type: custom:meteofrance-weather-card
+                entity: weather.mionnay
+                number_of_forecasts: '5'
+                name: Mionnay
+                current: true
+                one_hour_forecast: true
+                forecast: true
+                details: true
+                alert_forecast: true
+                animated_icons: true
+                cloudCoverEntity: sensor.mionnay_cloud_cover
+                rainChanceEntity: sensor.mionnay_rain_chance
+                freezeChanceEntity: sensor.mionnay_freeze_chance
+                snowChanceEntity: sensor.mionnay_snow_chance
+                uvEntity: sensor.mionnay_uv
+                rainForecastEntity: sensor.mionnay_next_rain
+                alertEntity: sensor.01_weather_alert
+              - type: custom:button-card
+                name: Lancer aspirateur
+                icon: mdi:vacuum
+                layout: icon_name
+                size: 20%
+                entity: vacuum.robot_aspirateur
+                tap_action:
+                  action: call-service
+                  entity: vacuum.robot_aspirateur
+                  confirmation:
+                    text: >-
+                      [[[ return `Etes vous sur de vouloir démarrer
+                      ${entity.attributes.friendly_name}?` ]]]
+                  service: vacuum.start
+                  service_data:
+                    entity_id: entity
