@@ -6,6 +6,8 @@
 !.gitignore
 !*.md
 !dashboards/
+!automations/
+
 
 # Ignore folders.
 .storage

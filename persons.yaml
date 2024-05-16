@@ -1,0 +1,16 @@
+- name: Julien
+  id: julien
+  device_trackers:
+    - device_tracker.galaxy_a50
+- name: Virginie
+  id: virginie
+  device_trackers:
+    - device_tracker.galaxy_s8
+- name: Gaetan
+  id: gaetan
+  device_trackers:
+    - device_tracker.galaxy_a13
+- name: Romain
+  id: romain
+  device_trackers:
+    - device_tracker.galaxys5mini

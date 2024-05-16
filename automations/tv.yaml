@@ -1,0 +1,93 @@
+- id: '1683966944851'
+  alias: Coupure TV quand freebox éteinte
+  description: ''
+  trigger:
+  - platform: device
+    type: changed_states
+    device_id: a744a962360332b9705e8f8af18a2eab
+    entity_id: 1d3e677fc01c388a39bb9ea03b8cce3b
+    domain: remote
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+  condition:
+  - condition: or
+    conditions:
+    - condition: device
+      device_id: 310431d68dafb9ebcc0d9691c14bd65b
+      domain: media_player
+      entity_id: cb510071aa3b9ffed27491191571435e
+      type: is_idle
+    - condition: device
+      device_id: 310431d68dafb9ebcc0d9691c14bd65b
+      domain: media_player
+      entity_id: cb510071aa3b9ffed27491191571435e
+      type: is_off
+  action:
+  - type: turn_off
+    device_id: e2374c1ae90a01e1b23c2cd0e32ef0fe
+    entity_id: switch.multiprisetv_l1
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: scene.turn_on
+    target:
+      entity_id: scene.lumiere_eteintes
+    metadata: {}
+  mode: single
+- id: '1684324252372'
+  alias: Allumer Wii
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 5fe4f15a80ba31864517d52cd9a8b0f0
+    type: action
+    subtype: 1_double
+    discovery_id: 0xa4c138243c3ac00a action_1_double
+  condition: []
+  action:
+  - type: turn_on
+    device_id: e2374c1ae90a01e1b23c2cd0e32ef0fe
+    entity_id: switch.multiprisetv_l3
+    domain: switch
+  mode: single
+- id: '1684325104545'
+  alias: Eteindre Wii
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 5fe4f15a80ba31864517d52cd9a8b0f0
+    type: action
+    subtype: 1_hold
+    discovery_id: 0xa4c138243c3ac00a action_1_hold
+  condition: []
+  action:
+  - type: turn_off
+    device_id: e2374c1ae90a01e1b23c2cd0e32ef0fe
+    entity_id: switch.multiprisetv_l3
+    domain: switch
+  mode: single
+- id: '1685890678142'
+  alias: Ambiance TV on Sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 0
+  - platform: device
+    device_id: a744a962360332b9705e8f8af18a2eab
+    domain: media_player
+    entity_id: media_player.freebox_player_pop_2
+    type: turned_on
+  condition: []
+  action:
+  - service: script.ambiance_tv
+    data: {}
+  mode: single
+

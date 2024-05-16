@@ -1,0 +1,12 @@
+famille:
+  name: Famille
+  entities:
+    - person.julien
+    - person.virginie
+    - person.gaetan
+    - person.romain
+parents:
+  name: Parents
+  entities:
+    - person.julien
+    - person.virginie

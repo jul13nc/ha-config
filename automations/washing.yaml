@@ -1,0 +1,15 @@
+- id: '1685895561368'
+  alias: MAL_Notif_Arrêt
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.washing_machine
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: notify.mobile_app_sm_a505fn
+    data:
+      message: MAL Terminée -> va étendre
+  mode: single

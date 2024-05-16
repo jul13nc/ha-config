@@ -1,0 +1,76 @@
+- id: ouverture_volet_est_ete
+  alias: Ouverture Volets Facade Est
+  description: Ete - Ouverture Volets Est
+  trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.soleil_face_est
+    from: "on"
+    to: "off"
+  condition:
+  - condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.soleil_face_est
+        state: "off"
+      - condition: state
+        entity_id: group.famille
+        state: home
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - cover.volet_gaetan_window_covering
+        - cover.volet_salon_window_covering
+        - cover.volet_salle_jeux_window_covering
+- id: ouverture_volet_ouest_ete
+  alias: Ouverture Volets Facade Ouest
+  description: Ete - Ouverture Volets Ouest
+  trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.soleil_face_ouest
+    from: "on"
+    to: "off"
+  condition:
+  - condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.soleil_face_ouest
+        state: "off"
+      - condition: state
+        entity_id: group.famille
+        state: home
+  action:
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - cover.volet_romain_window_covering
+        - cover.volet_bureau_window_covering
+        - cover.volet_parents_window_covering
+- id: fermeture_volet_ouest_ete
+  alias: Fermeture Volets Facade Ouest
+  description: Ete - Fermeture Volets Ouest
+  trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.soleil_face_ouest
+    from: "off"
+    to: "on"
+  condition:
+  - condition: state
+    entity_id: binary_sensor.soleil_face_ouest
+    state: "on"
+  action:
+  - service: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+        - cover.volet_romain_window_covering
+        - cover.volet_bureau_window_covering
+        - cover.volet_parents_window_covering

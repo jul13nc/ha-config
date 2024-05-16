@@ -13,7 +13,7 @@ views:
                   entities:
                     - entity: sensor.th_salon_temperature
                 - type: custom:mushroom-cover-card
-                  entity: cover.rolling_shutter_window_covering
+                  entity: cover.volet_salon_window_covering
                   fill_container: false
                   show_position_control: false
                   show_tilt_position_control: false
@@ -54,7 +54,7 @@ views:
                   entities:
                     - entity: sensor.th_ch_gaetan_temperature
                 - type: custom:mushroom-cover-card
-                  entity: cover.rolling_shutter_window_covering_4
+                  entity: cover.volet_gaetan_window_covering
                   show_position_control: false
                   show_buttons_control: true
                   show_tilt_position_control: false
@@ -70,7 +70,7 @@ views:
                   entities:
                     - entity: sensor.th_ch_romain_temperature
                 - type: custom:mushroom-cover-card
-                  entity: cover.rolling_shutter_window_covering_3
+                  entity: cover.volet_romain_window_covering
                   show_position_control: false
                   show_buttons_control: true
                   show_tilt_position_control: false
@@ -86,7 +86,7 @@ views:
                   entities:
                     - entity: sensor.th_ch_parents_temperature
                 - type: custom:mushroom-cover-card
-                  entity: cover.rolling_shutter_window_covering_6
+                  entity: cover.volet_parents_window_covering
                   show_position_control: true
                   show_buttons_control: true
                   show_tilt_position_control: false
@@ -104,7 +104,7 @@ views:
                 entities:
                   - entity: sensor.th_bureau_temperature
               - type: custom:mushroom-cover-card
-                entity: cover.rolling_shutter_window_covering_2
+                entity: cover.volet_bureau_window_covering
                 show_position_control: false
                 show_buttons_control: true
                 show_tilt_position_control: false
@@ -120,7 +120,7 @@ views:
                 entities:
                   - entity: sensor.th_salle_jeux_temperature
               - type: custom:mushroom-cover-card
-                entity: cover.rolling_shutter_window_covering_5
+                entity: cover.volet_salle_jeux_window_covering
                 show_position_control: true
                 show_buttons_control: true
                 show_tilt_position_control: false
