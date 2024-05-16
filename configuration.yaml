@@ -62,6 +62,14 @@ template:
         unit_of_measurement: "°"
         state: "{{ '%+.1f'|format(state_attr('sun.sun', 'azimuth')) }}"
 
+input_select: 
+  modevolets:
+    name: Mode des Volets
+    options:
+      - Manuel 
+      - Ete
+      - Hiver
+
 binary_sensor: 
   - platform: threshold
     name: "soleil face Ouest"

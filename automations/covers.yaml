@@ -16,6 +16,9 @@
       - condition: state
         entity_id: group.famille
         state: home
+      - condition: state
+        entity_id: input_select.modevolets
+        state: Ete
   action:
   - service: cover.open_cover
     metadata: {}
@@ -43,6 +46,9 @@
       - condition: state
         entity_id: group.famille
         state: home
+      - condition: state
+        entity_id: input_select.modevolets
+        state: Ete
   action:
   - service: cover.open_cover
     metadata: {}
@@ -62,9 +68,14 @@
     from: "off"
     to: "on"
   condition:
-  - condition: state
-    entity_id: binary_sensor.soleil_face_ouest
-    state: "on"
+  - condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.soleil_face_ouest
+        state: "on"
+      - condition: state
+        entity_id: input_select.modevolets
+        state: Ete
   action:
   - service: cover.close_cover
     metadata: {}

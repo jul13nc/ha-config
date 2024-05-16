@@ -170,3 +170,8 @@ views:
                   service: vacuum.start
                   service_data:
                     entity_id: entity
+      - type: custom:mushroom-select-card
+        entity: input_select.modevolets
+        icon: mdi:window-shutter-cog
+        layout: horizontal
+        secondary_info: none
