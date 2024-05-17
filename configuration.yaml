@@ -53,6 +53,24 @@ template:
         device_class: running
         state: >
           {{ states('sensor.prisemal_power') | default(0) | float > 0 }}
+  - binary_sensor:
+      - name: "soleil face Est"
+        state: >
+          {{ (state_attr('sun.sun', 'elevation') > 0)
+           and (state_attr('sun.sun', 'azimuth') > 0)
+           and (state_attr('sun.sun', 'azimuth') < 168 ) }}
+  - binary_sensor:
+      - name: "soleil face Sud"
+        state: >
+          {{ (state_attr('sun.sun', 'elevation') > 0)
+           and (state_attr('sun.sun', 'azimuth') > 78)
+           and (state_attr('sun.sun', 'azimuth') < 258 ) }}
+  - binary_sensor:
+      - name: "soleil face Ouest"
+        state: >
+          {{ (state_attr('sun.sun', 'elevation') > 0)
+           and (state_attr('sun.sun', 'azimuth') > 168)
+           and (state_attr('sun.sun', 'azimuth') < 348 ) }}
   - sensor:
       - name: Sun Elevation
         unit_of_measurement: "°"
@@ -60,29 +78,13 @@ template:
   - sensor:
       - name: Sun Azimuth
         unit_of_measurement: "°"
-        state: "{{ '%+.1f'|format(state_attr('sun.sun', 'azimuth')) }}"
+        state: "{{ '%+.1f'|format(state_attr('sun.sun', 'azimuth')) }}" 
 
 input_select: 
   modevolets:
     name: Mode des Volets
     options:
-      - Manuel 
+      - Manuel
+      - Presence
       - Ete
       - Hiver
-
-binary_sensor: 
-  - platform: threshold
-    name: "soleil face Ouest"
-    upper: 340
-    lower: 160
-    entity_id: sensor.sun_azimuth
-  - platform: threshold
-    name: "soleil face Est"
-    upper: 160
-    lower: 0
-    entity_id: sensor.sun_azimuth
-  - platform: threshold
-    name: "soleil face Sud"
-    upper: 250
-    lower: 70
-    entity_id: sensor.sun_azimuth
