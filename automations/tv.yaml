@@ -1,4 +1,4 @@
-- id: '1683966944851'
+- id: 'autom_shut_tv_freebox_off'
   alias: Coupure TV quand freebox éteinte
   description: ''
   trigger:
@@ -39,7 +39,7 @@
       entity_id: scene.lumiere_eteintes
     metadata: {}
   mode: single
-- id: '1684324252372'
+- id: 'autom_switch_wii'
   alias: Allumer Wii
   description: ''
   trigger:
@@ -56,7 +56,7 @@
     entity_id: switch.multiprisetv_l3
     domain: switch
   mode: single
-- id: '1684325104545'
+- id: 'auom_switchoff_wii'
   alias: Eteindre Wii
   description: ''
   trigger:
@@ -73,7 +73,7 @@
     entity_id: switch.multiprisetv_l3
     domain: switch
   mode: single
-- id: '1685890678142'
+- id: 'autom_tv_light_sunset'
   alias: Ambiance TV on Sunset
   description: ''
   trigger:

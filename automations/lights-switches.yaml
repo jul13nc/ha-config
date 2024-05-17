@@ -1,4 +1,4 @@
-- id: '1684436711504'
+- id: 'autom_light_switch_lampe_salon'
   alias: Interrupteur Lampe Salon
   description: ''
   trigger:
@@ -15,7 +15,7 @@
     entity_id: switch.priselampesalon
     domain: switch
   mode: single
-- id: '1684436752236'
+- id: 'autom_light_switch_light_tv'
   alias: Interrupteur Lumiere TV
   description: ''
   trigger:
@@ -32,7 +32,7 @@
     entity_id: switch.multiprisetv_l2
     domain: switch
   mode: single
-- id: '1685705691752'
+- id: 'autom_light_switch_canap_tv'
   alias: Interrupteurs Ampoules Canape/TV
   description: ''
   trigger:
@@ -53,7 +53,7 @@
     entity_id: light.lampetele
     domain: light
   mode: single
-- id: '1685705743413'
+- id: 'autom_light_switch_buffet_entry'
   alias: Interrupteur Ampoules Buffet/Flechettes
   description: ''
   trigger:
