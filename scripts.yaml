@@ -24,11 +24,35 @@ ambiance_tv:
 notif_parent_maison:
   alias: Notif Parent Maison
   sequence:
-  - condition: state
-    entity_id: person.julien
-    state: home
-  - service: notify.mobile_app_sm_a505fn
-    data:
-      message: '{{ notif_text }}'
+  - parallel:
+    - if:
+      - condition: state
+        entity_id: person.julien
+        state: home
+      then:
+      - service: notify.mobile_app_sm_a505fn
+        metadata: {}
+        data:
+          title: '{{ titre }}'
+          message: '{{ message }}'
+    - if:
+      - condition: state
+        entity_id: person.virginie
+        state: home
+      then:
+      - service: notify.mobile_app_sm_g950f
+        metadata: {}
+        data:
+          title: '{{ titre }}'
+          message: '{{ message }}'
   mode: queued
   icon: mdi:account-group
+  fields:
+    message:
+      selector:
+        text: null
+      name: message
+    titre:
+      selector:
+        text: null
+      name: titre

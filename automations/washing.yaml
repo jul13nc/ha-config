@@ -1,4 +1,4 @@
-- id: '1685895561368'
+- id: 'autom_washing_machine_stop'
   alias: MAL_Notif_Arrêt
   description: ''
   trigger:
@@ -9,7 +9,9 @@
     to: 'off'
   condition: []
   action:
-  - service: notify.mobile_app_sm_a505fn
+  - service: script.notif_parent_maison
+    metadata: {}
     data:
-      message: MAL Terminée -> va étendre
+      title: Machine
+      message: La machine à laver est terminée
   mode: single
