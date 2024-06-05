@@ -10,11 +10,14 @@ frontend:
 tts:
   - platform: google_translate
 
-automation: !include_dir_merge_list automations/
+automation: !include automations.yaml
+automation script: !include_dir_merge_list automations
 script: !include scripts.yaml
 scene: !include scenes.yaml
 person: !include persons.yaml
 group: !include groups.yaml
+rest: !include rest.yaml
+cover: !include cover.yaml
 
 http:
   use_x_forwarded_for: true
@@ -58,7 +61,7 @@ template:
         state: >
           {{ (state_attr('sun.sun', 'elevation') > 0)
            and (state_attr('sun.sun', 'azimuth') > 0)
-           and (state_attr('sun.sun', 'azimuth') < 168 ) }}
+           and (state_attr('sun.sun', 'azimuth') < 154 ) }}
   - binary_sensor:
       - name: "soleil face Sud"
         state: >
@@ -69,8 +72,12 @@ template:
       - name: "soleil face Ouest"
         state: >
           {{ (state_attr('sun.sun', 'elevation') > 0)
-           and (state_attr('sun.sun', 'azimuth') > 168)
+           and (state_attr('sun.sun', 'azimuth') > 176)
            and (state_attr('sun.sun', 'azimuth') < 348 ) }}
+  - binary_sensor:
+      - name: "Jour Dehors"
+        state: >
+          {{ (state_attr('sun.sun', 'elevation') > -4) }}
   - sensor:
       - name: Sun Elevation
         unit_of_measurement: "°"
@@ -79,6 +86,52 @@ template:
       - name: Sun Azimuth
         unit_of_measurement: "°"
         state: "{{ '%+.1f'|format(state_attr('sun.sun', 'azimuth')) }}" 
+  - binary_sensor:
+      - name: vacances_scolaires_aujourdhui
+        unique_id: binary_sensor.vacances_scolaires_aujourdhui
+        icon: mdi:calendar-today
+        state: |-
+          {% set aujourdhui = now().strftime('%Y-%m-%d')%}
+          {% if aujourdhui < state_attr('sensor.vacances_scolaires', 'start_date') or aujourdhui > state_attr('sensor.vacances_scolaires', 'end_date') %}
+          false
+          {% else %} 
+          true
+          {% endif %}
+  - binary_sensor:
+      - name: jourTravail
+        unique_id: binary_sensor.jour_travail_aujourdhui
+        icon: mdi:calendar-today
+        state: |-
+          {{ is_state('binary_sensor.vacances_scolaires_aujourdhui','off')
+          and
+          is_state('binary_sensor.ouvrableaujourdhui','on')
+          }}
+  - sensor:
+      - name: "Volume de Gaz"
+        unique_id: sensor.gaz_volume
+        unit_of_measurement: 'm³'
+        state: "{{ states('input_number.gaz_counter') | int / 1000 | round(3) }}"
+        device_class: gas
+        state_class: total_increasing
+  - sensor:
+      - name: "Volume d'Eau'"
+        unique_id: sensor.water_volume
+        unit_of_measurement: 'm³'
+        state: "{{ states('input_number.water_counter') | int / 1000 | round(3) }}"
+        device_class: water
+        state_class: total_increasing
+
+input_number:
+  gaz_counter :
+    name: gaz_counter
+    icon: mdi:gas-cylinder
+    min: 0
+    max: 100000000000
+  water_counter :
+    name: water_counter
+    icon: mdi:water
+    min: 0
+    max: 100000000000
 
 input_select: 
   modevolets:
@@ -88,3 +141,35 @@ input_select:
       - Presence
       - Ete
       - Hiver
+
+utility_meter:
+  gaz_total_usage_daily:
+    source: sensor.gaz_volume
+    cycle: daily
+  gaz_total_usage_weekly:
+    source: sensor.gaz_volume
+    cycle: weekly
+  gaz_total_usage_monthly:
+    source: sensor.gaz_volume
+    cycle: monthly
+  gaz_total_usage_quarterly:
+    source: sensor.gaz_volume
+    cycle: quarterly
+  gaz_total_usage_yearly:
+    source: sensor.gaz_volume
+    cycle: yearly
+  water_total_usage_daily:
+    source: sensor.water_volume
+    cycle: daily
+  water_total_usage_weekly:
+    source: sensor.water_volume
+    cycle: weekly
+  water_total_usage_monthly:
+    source: sensor.water_volume
+    cycle: monthly
+  water_total_usage_quarterly:
+    source: sensor.water_volume
+    cycle: quarterly
+  water_total_usage_yearly:
+    source: sensor.water_volume
+    cycle: yearly

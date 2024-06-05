@@ -1,0 +1,23 @@
+- id: rappel_reveil_jour_chome
+  alias: Rappel Suppression Reveil Jour Chome
+  description: ""
+  mode: single
+  trigger:
+    - platform: time
+      at: "21:00:00"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.ouvrabledemain
+      state: "off"
+    - condition: time
+      weekday:
+        - sun
+        - mon
+        - tue
+        - wed
+        - thu
+  action:
+    - service: notify.mobile_app_sm_a505fn
+      metadata: {}
+      data:
+        message: Désactiver le réveil pr demain

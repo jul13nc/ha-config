@@ -1,0 +1,33 @@
+- id: 'counter_water'
+  alias: Increment Water Counter
+  description: 'Increment Water Counter'
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.intereau_action
+  condition: []
+  action:
+  - service: notify.mobile_app_sm_a505fn
+    metadata: {}
+    data:
+      message: TEST
+  - service: input_number.set_value
+    data:
+      value: "{{ states('input_number.water_counter') | int + 1 | int }}"
+    entity_id: input_number.water_counter
+  mode: single
+
+- id: 'counter_gaz'
+  alias: Increment Gaz Counter
+  description: 'Increment Gaz Counter'
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.intergaz_action
+  condition: []
+  action:
+  - service: input_number.set_value
+    data:
+      value: "{{ states('input_number.gaz_counter') | int + 10 | int }}"
+    entity_id: input_number.gaz_counter
+  mode: single

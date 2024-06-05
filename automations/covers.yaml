@@ -1,87 +1,18 @@
-- id: ouverture_volet_est_ete
-  alias: Ouverture Volets Facade Est
-  description: Ete - Ouverture Volets Est
-  trigger:
-  - platform: state
-    entity_id:
-      - binary_sensor.soleil_face_est
-    from: "on"
-    to: "off"
-  condition:
-  - condition: and
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.soleil_face_est
-        state: "off"
-      - condition: state
-        entity_id: group.famille
-        state: home
-      - condition: state
-        entity_id: input_select.modevolets
-        state: Ete
-  action:
-  - service: cover.open_cover
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-        - cover.volet_gaetan_window_covering
-        - cover.volet_salon_window_covering
-        - cover.volet_salle_jeux_window_covering
-- id: ouverture_volet_ouest_ete
-  alias: Ouverture Volets Facade Ouest
-  description: Ete - Ouverture Volets Ouest
-  trigger:
-  - platform: state
-    entity_id:
-      - binary_sensor.soleil_face_ouest
-    from: "on"
-    to: "off"
-  condition:
-  - condition: and
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.soleil_face_ouest
-        state: "off"
-      - condition: state
-        entity_id: group.famille
-        state: home
-      - condition: state
-        entity_id: input_select.modevolets
-        state: Ete
-  action:
-  - service: cover.open_cover
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-        - cover.volet_romain_window_covering
-        - cover.volet_bureau_window_covering
-        - cover.volet_parents_window_covering
-- id: fermeture_volet_ouest_ete
-  alias: Fermeture Volets Facade Ouest
-  description: Ete - Fermeture Volets Ouest
-  trigger:
-  - platform: state
-    entity_id:
-      - binary_sensor.soleil_face_ouest
-    from: "off"
-    to: "on"
-  condition:
-  - condition: and
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.soleil_face_ouest
-        state: "on"
-      - condition: state
-        entity_id: input_select.modevolets
-        state: Ete
-  action:
-  - service: cover.close_cover
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-        - cover.volet_romain_window_covering
-        - cover.volet_bureau_window_covering
-        - cover.volet_parents_window_covering
+- id: 'cover_facade_est'
+  alias: Volets - EST
+  description: 'Gestion auto des volets de la facade EST'
+  use_blueprint:
+    path: covers.yaml
+    input:
+      cover: cover.volets_facade_est
+      facade_sun_sensor: binary_sensor.soleil_face_est
+- id: 'cover_facade_ouest'
+  alias: Volets - OUEST
+  description: 'Gestion auto des volets de la facade OUEST'
+  use_blueprint:
+    path: covers.yaml
+    input:
+      cover: cover.volets_facade_ouest
+      facade_sun_sensor: binary_sensor.soleil_face_ouest
+      time_up_early: "07:17:00"
+

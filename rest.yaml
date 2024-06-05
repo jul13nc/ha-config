@@ -1,0 +1,31 @@
+- scan_interval: 14400
+  resource_template: |-
+    {% set location = 'Lyon' %}
+    {% set rows = '1'%}
+    {% set aujourdhui = now().strftime('%Y-%m-%d')%}
+    {% set dayOfYear =  now().strftime('%j') %}
+    {% set year =  now().strftime('%Y') | int %}
+    {% set lastYear = year - 1 %}
+    {% set nextYear = year + 1 %}
+    {% if dayOfYear > '244' %}
+    {% set schoolYear = (year | string) + "-" + (nextYear | string) %}
+    {%- else -%}
+    {% set schoolYear = (lastYear | string) + "-" + (year | string) %}
+    {%- endif %}
+    https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-calendrier-scolaire/records?where=end_date%3E%22{{aujourdhui}}%22&order_by=end_date%20ASC&limit={{rows}}&refine=location%3A{{location}}
+  sensor:
+    name: vacances_scolaires
+    json_attributes_path: "$.results[0]"
+    json_attributes:
+      - start_date
+      - end_date
+      - description
+    value_template: |-
+      {% set aujourdhui = now().strftime('%Y-%m-%d')%}
+      {% for record in value_json.results -%}
+      {% if aujourdhui >= record.start_date and aujourdhui <= record.end_date %} 
+      {%- if record.description %}{{record.description}} jusqu'au {{ as_timestamp(record.end_date) | timestamp_custom('%d-%m-%Y') }} {% endif %}
+      {% else %} 
+      {%- if record.end_date > aujourdhui and record.description %} prochaines : {{record.description}} {{ as_timestamp(record.start_date) | timestamp_custom('%d-%m-%Y') }}{% endif %}
+      {% endif %}
+      {%- endfor %}

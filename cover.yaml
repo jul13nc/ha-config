@@ -1,0 +1,17 @@
+- platform: group
+  name: Volets Etage
+  entities:
+  - cover.volet_gaetan_window_covering
+  - cover.volet_romain_window_covering
+  - cover.volet_bureau_window_covering
+  - cover.volet_salle_jeux_window_covering
+- platform: group
+  name: Volets Facade Est
+  entities:
+  - cover.volet_gaetan_window_covering
+  - cover.volet_salle_jeux_window_covering
+- platform: group
+  name: Volets Facade Ouest
+  entities:
+  - cover.volet_romain_window_covering
+  - cover.volet_bureau_window_covering
