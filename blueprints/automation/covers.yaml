@@ -1,0 +1,177 @@
+blueprint:
+  name: Cover Automation
+  description: Handle the covers with different modes
+  domain: automation
+
+  input:
+    cover:
+      name: "🏠 Volet"
+      description: >-
+        Volet ou groupe de volets à automatiser
+      selector:
+        entity:
+          filter:
+            - domain:
+                - cover
+    time_up_early:
+      name: "🔼 Heure min de lever"
+      description: >-
+        Heure la plus tôt à laquelle le volet s'ouvre si la luminosité le permet.
+      default: "07:00:00"
+      selector:
+        time: {}
+    time_up_early_non_workday:
+      name: "🔼 Heure min de lever - Jour non travaillé"
+      description: >-
+        Heure la plus tôt à laquelle le volet s'ouvre si la luminosité le permet. Valable pour les jours non travaillés
+      default: "08:30:00"
+      selector:
+        time: {}
+    time_down_late:
+      name: "🔻 Heure max de fermeture"
+      description: >-
+        Heure la plus tardive à laquelle les volets se ferment
+      default: "21:00:00"
+      selector:
+        time: {}
+    workday_sensor:
+      name: "Capteur jour travaillé"
+      default: binary_sensor.jourtravail
+      selector:
+        entity:
+          domain:
+            - binary_sensor
+    sunny_outside_sensor:
+      name: "Capteur jour leve extérieur"
+      default: binary_sensor.jour_dehors
+      selector:
+        entity:
+          domain:
+            - binary_sensor
+    facade_sun_sensor:
+      name: Ensoleillement de la facade
+      description: >-
+        Capteur d'enseoleillement de la facade
+      selector:
+          entity:
+            domain:
+              - binary_sensor
+
+trigger_variables:
+  time_up_early: !input time_up_early
+  time_up_early_non_workday: !input time_up_early_non_workday
+  time_down_late: !input time_down_late
+  workday_sensor: !input workday_sensor
+
+trigger:
+  ## FACADE SUN EXPOSITION CHANGED
+  - platform: state
+    entity_id: !input facade_sun_sensor
+    id: sun_exposition
+  ## FAMILY PRESENCE CHANGED TO NOT HOME
+  - platform: state
+    entity_id:
+      - group.famille
+    to: not_home
+    id: no-more-presence
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+  ## FAMILY PRESENCE CHANGED TO HOME
+  - platform: state
+    entity_id:
+      - group.famille
+    to: home
+    id: presence
+  ## TIME TO OPEN COVERS
+  - platform: template
+    value_template: >-
+      {% if is_state(workday_sensor, 'off') %}
+        {{ now() >= today_at(time_up_early_non_workday) }}
+      {% else %}
+        {{ now() >= today_at(time_up_early) }}
+      {% endif %}
+    id: "time_up"
+  ## TIME TO CLOSE COVERS
+  - platform: template
+    value_template: >-
+        {{ now() <= today_at(time_down_late) }}
+    id: "time_close"
+  ## SUNNY OUTSIDE CONDITION
+  - platform: state
+    entity_id: !input sunny_outside_sensor
+    id: sun_outside
+
+## Confirm hour is between early and late 
+## So covers dont move during the night
+## And mode of covers is not manual
+
+condition:
+  - condition: and
+    conditions:
+      - condition: or
+        conditions:
+          - condition: trigger
+            id: "time_close"
+          - condition: and
+            conditions:
+              - condition: template
+                value_template: >-
+                  {% if is_state(workday_sensor, 'off') %}
+                    {{ now() <= today_at(time_down_late) and now() >= today_at(time_up_early_non_workday) }}
+                  {% else %}
+                    {{ now() <= today_at(time_down_late) and now() >= today_at(time_up_early) }}
+                  {% endif %}
+              - condition: state
+                entity_id: !input sunny_outside_sensor
+                state: "on"
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: input_select.modevolets
+            state: Manuel
+action:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: input_select.modevolets
+            state: Presence
+        sequence: 
+## IF MODE IS PRESENCE
+# Open covers if Sunny outside and Someone is Home
+          - if:
+              - condition: state
+                entity_id: group.famille
+                state: home
+            then:
+              - service: cover.open_cover
+                metadata: {}
+                data: {}
+                target:
+                  entity_id: !input cover
+            else:
+              - service: cover.close_cover
+                metadata: {}
+                data: {}
+                target:
+                  entity_id: !input cover
+
+## END MODE PRESENCE
+      - conditions:
+          - condition: state
+            entity_id: input_select.modevolets
+            state: Ete
+        sequence: []
+## IF MODE IS ETE
+# Open covers if Sunny outside and Someone is Home
+## END MODE ETE
+      - conditions:
+          - condition: state
+            entity_id: input_select.modevolets
+            state: Hiver
+        sequence: []
+## ELSE IF MODE HIVER
+## END MODE HIVER
+
+## ELSE -> MODE MANUAL -> DO NOTHING
