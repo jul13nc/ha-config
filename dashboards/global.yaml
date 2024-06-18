@@ -94,40 +94,40 @@ views:
                   secondary_info: none
                   icon_type: none
                   layout: horizontal
-      - type: horizontal-stack
-        cards:
-          - type: vertical-stack
-            cards:
-              - type: custom:mini-graph-card
-                name: Bureau
-                height: 50
-                entities:
-                  - entity: sensor.th_bureau_temperature
-              - type: custom:mushroom-cover-card
-                entity: cover.volet_bureau_window_covering
-                show_position_control: false
-                show_buttons_control: true
-                show_tilt_position_control: false
-                primary_info: none
-                secondary_info: none
-                icon_type: none
-                layout: horizontal
-          - type: vertical-stack
-            cards:
-              - type: custom:mini-graph-card
-                name: Salle Jeux
-                height: 50
-                entities:
-                  - entity: sensor.th_salle_jeux_temperature
-              - type: custom:mushroom-cover-card
-                entity: cover.volet_salle_jeux_window_covering
-                show_position_control: true
-                show_buttons_control: true
-                show_tilt_position_control: false
-                primary_info: none
-                secondary_info: none
-                icon_type: none
-                layout: horizontal
+        - type: horizontal-stack
+          cards:
+            - type: vertical-stack
+              cards:
+                - type: custom:mini-graph-card
+                  name: Bureau
+                  height: 50
+                  entities:
+                    - entity: sensor.th_bureau_temperature
+                - type: custom:mushroom-cover-card
+                  entity: cover.volet_bureau_window_covering
+                  show_position_control: false
+                  show_buttons_control: true
+                  show_tilt_position_control: false
+                  primary_info: none
+                  secondary_info: none
+                  icon_type: none
+                  layout: horizontal
+            - type: vertical-stack
+              cards:
+                - type: custom:mini-graph-card
+                  name: Salle Jeux
+                  height: 50
+                  entities:
+                    - entity: sensor.th_salle_jeux_temperature
+                - type: custom:mushroom-cover-card
+                  entity: cover.volet_salle_jeux_window_covering
+                  show_position_control: true
+                  show_buttons_control: true
+                  show_tilt_position_control: false
+                  primary_info: none
+                  secondary_info: none
+                  icon_type: none
+                  layout: horizontal
       - type: horizontal-stack
         cards:
           - type: vertical-stack
