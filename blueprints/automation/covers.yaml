@@ -17,7 +17,7 @@ blueprint:
       name: "🔼 Heure min de lever"
       description: >-
         Heure la plus tôt à laquelle le volet s'ouvre si la luminosité le permet.
-      default: "07:00:00"
+      default: "06:45:00"
       selector:
         time: {}
     time_up_early_non_workday:
@@ -31,7 +31,7 @@ blueprint:
       name: "🔻 Heure max de fermeture"
       description: >-
         Heure la plus tardive à laquelle les volets se ferment
-      default: "21:00:00"
+      default: "20:35:00"
       selector:
         time: {}
     workday_sensor:
@@ -62,6 +62,18 @@ trigger_variables:
   time_up_early_non_workday: !input time_up_early_non_workday
   time_down_late: !input time_down_late
   workday_sensor: !input workday_sensor
+  sunny_outside_sensor: !input sunny_outside_sensor
+
+variables:
+  time_up_today:  >-
+    {% if is_state(workday_sensor, 'on') %}
+      {{ time_up_early }}
+    {% else %}
+      {{ time_up_early_non_workday }}
+    {% endif %}
+  time_down_today:  !input time_down_late
+  workday_sensor: !input workday_sensor
+
 
 trigger:
   ## FACADE SUN EXPOSITION CHANGED
@@ -88,20 +100,16 @@ trigger:
   - platform: template
     value_template: >-
       {% if is_state(workday_sensor, 'off') %}
-        {{ now() >= today_at(time_up_early_non_workday) }}
+        {{ is_state(sunny_outside_sensor, 'on') and now() >= today_at(time_up_early_non_workday) }}
       {% else %}
-        {{ now() >= today_at(time_up_early) }}
+        {{ is_state(sunny_outside_sensor, 'on') and now() >= today_at(time_up_early) }}
       {% endif %}
     id: "time_up"
   ## TIME TO CLOSE COVERS
   - platform: template
     value_template: >-
-        {{ now() <= today_at(time_down_late) }}
+        {{ is_state(sunny_outside_sensor, 'off') or now() >= today_at(time_down_late) }}
     id: "time_close"
-  ## SUNNY OUTSIDE CONDITION
-  - platform: state
-    entity_id: !input sunny_outside_sensor
-    id: sun_outside
 
 ## Confirm hour is between early and late 
 ## So covers dont move during the night
@@ -114,29 +122,43 @@ condition:
         conditions:
           - condition: trigger
             id: "time_close"
+            alias: Triggered by closing time
           - condition: and
             conditions:
               - condition: template
                 value_template: >-
-                  {% if is_state(workday_sensor, 'off') %}
-                    {{ now() <= today_at(time_down_late) and now() >= today_at(time_up_early_non_workday) }}
-                  {% else %}
-                    {{ now() <= today_at(time_down_late) and now() >= today_at(time_up_early) }}
-                  {% endif %}
+                 {{ now() <= today_at(time_down_today) and now() >= today_at(time_up_today) }}
+                alias: Within time management window
               - condition: state
                 entity_id: !input sunny_outside_sensor
                 state: "on"
+                alias: Sunny outside
       - condition: not
         conditions:
           - condition: state
             entity_id: input_select.modevolets
             state: Manuel
+            alias: Volets pas en gestion manuelle
+        alias: Volets pas en gestion manuelle
 action:
   - choose:
+      - conditions:
+          - condition: trigger
+            id: "time_close"
+        sequence: 
+## IF EVENING CLOSE 
+# If trgiggered by late hour, juste close the covers
+            - service: cover.close_cover
+              metadata: {}
+              data: {}
+              target:
+                entity_id: !input cover
+## END EVENING CLOSE 
       - conditions:
           - condition: state
             entity_id: input_select.modevolets
             state: Presence
+            alias: Covers in presence mode
         sequence: 
 ## IF MODE IS PRESENCE
 # Open covers if Sunny outside and Someone is Home
@@ -144,6 +166,7 @@ action:
               - condition: state
                 entity_id: group.famille
                 state: home
+                alias: Somebody home
             then:
               - service: cover.open_cover
                 metadata: {}
@@ -156,15 +179,38 @@ action:
                 data: {}
                 target:
                   entity_id: !input cover
-
 ## END MODE PRESENCE
       - conditions:
           - condition: state
             entity_id: input_select.modevolets
             state: Ete
-        sequence: []
+        sequence: 
 ## IF MODE IS ETE
 # Open covers if Sunny outside and Someone is Home
+          - if:
+              - condition: state
+                entity_id: !input facade_sun_sensor
+                state: 'on'
+                alias: Facade ensoleillée
+            then:
+              - service: cover.close_cover
+                metadata: {}
+                data: {}
+                target:
+                  entity_id: !input cover
+            else:
+              - if:
+                  - condition: state
+                    entity_id: group.famille
+                    state: home
+                    alias: Somebody home
+                then:
+                  - service: cover.open_cover
+                    metadata: {}
+                    data: {}
+                    target:
+                      entity_id: !input cover
+
 ## END MODE ETE
       - conditions:
           - condition: state

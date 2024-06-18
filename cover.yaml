@@ -6,12 +6,20 @@
   - cover.volet_bureau_window_covering
   - cover.volet_salle_jeux_window_covering
 - platform: group
-  name: Volets Facade Est
+  name: Volets Etage Facade Est
   entities:
   - cover.volet_gaetan_window_covering
   - cover.volet_salle_jeux_window_covering
 - platform: group
-  name: Volets Facade Ouest
+  name: Volets RDC Facade Est
+  entities:
+  - cover.volet_salon_window_covering
+- platform: group
+  name: Volets Etage Facade Ouest
   entities:
   - cover.volet_romain_window_covering
   - cover.volet_bureau_window_covering
+- platform: group
+  name: Volets RDC Facade Ouest
+  entities:
+  - cover.volet_parents_window_covering

@@ -1,17 +1,44 @@
-- id: 'cover_facade_est'
-  alias: Volets - EST
-  description: 'Gestion auto des volets de la facade EST'
+- id: 'cover_etage_facade_est'
+  alias: Volets - Etage - EST
+  description: 'Gestion auto des voletsde l''étage de la facade EST'
+  trace:
+     stored_traces: 20
   use_blueprint:
     path: covers.yaml
     input:
-      cover: cover.volets_facade_est
+      cover: cover.volets_etage_facade_est
       facade_sun_sensor: binary_sensor.soleil_face_est
-- id: 'cover_facade_ouest'
-  alias: Volets - OUEST
-  description: 'Gestion auto des volets de la facade OUEST'
+- id: 'cover_rdc_facade_est'
+  alias: Volets - RDC - EST
+  description: 'Gestion auto des volets RDC de la facade EST'
+  trace:
+     stored_traces: 20
   use_blueprint:
     path: covers.yaml
     input:
-      cover: cover.volets_facade_ouest
+      cover: cover.volets_rdc_facade_est
+      facade_sun_sensor: binary_sensor.soleil_face_est
+      time_down_late: "22:00:00"
+- id: 'cover_etage_facade_ouest'
+  alias: Volets - Etage - OUEST
+  description: 'Gestion auto des volets de l''étage de la facade OUEST'
+  trace:
+     stored_traces: 20
+  use_blueprint:
+    path: covers.yaml
+    input:
+      cover: cover.volets_etage_facade_ouest
+      facade_sun_sensor: binary_sensor.soleil_face_ouest
+- id: 'cover_rdc_facade_ouest'
+  alias: Volets - RDC - OUEST
+  description: 'Gestion auto des volets RDC de la facade OUEST'
+  trace:
+     stored_traces: 20
+  use_blueprint:
+    path: covers.yaml
+    input:
+      cover: cover.volets_rdc_facade_ouest
+      time_up_early: "06:55:00"
+      time_down_late: "21:00:00"
       facade_sun_sensor: binary_sensor.soleil_face_ouest
 
