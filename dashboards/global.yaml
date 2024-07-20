@@ -12,10 +12,13 @@ views:
                   height: 50
                   entities:
                     - entity: sensor.th_salon_temperature
+                      show_legend: false
+                    - entity: sensor.th_salon_humidity
+                      show_legend: false
                 - type: custom:mushroom-cover-card
-                  entity: cover.volet_salon_window_covering
+                  entity: cover.volet_roulant_salon
                   fill_container: false
-                  show_position_control: false
+                  show_position_control: true
                   show_tilt_position_control: false
                   show_buttons_control: true
                   primary_info: none
@@ -53,8 +56,11 @@ views:
                   height: 50
                   entities:
                     - entity: sensor.th_ch_gaetan_temperature
+                      show_legend: false
+                    - entity: sensor.th_ch_gaetan_humidity
+                      show_legend: false
                 - type: custom:mushroom-cover-card
-                  entity: cover.volet_gaetan_window_covering
+                  entity: cover.volet_roulant_gatean
                   show_position_control: false
                   show_buttons_control: true
                   show_tilt_position_control: false
@@ -69,8 +75,11 @@ views:
                   height: 50
                   entities:
                     - entity: sensor.th_ch_romain_temperature
+                      show_legend: false
+                    - entity: sensor.th_ch_romain_humidity
+                      show_legend: false
                 - type: custom:mushroom-cover-card
-                  entity: cover.volet_romain_window_covering
+                  entity: cover.volet_roulant_romain
                   show_position_control: false
                   show_buttons_control: true
                   show_tilt_position_control: false
@@ -85,8 +94,11 @@ views:
                   height: 50
                   entities:
                     - entity: sensor.th_ch_parents_temperature
+                      show_legend: false
+                    - entity: sensor.th_ch_parents_humidity
+                      show_legend: false
                 - type: custom:mushroom-cover-card
-                  entity: cover.volet_parents_window_covering
+                  entity: cover.volet_roulant_parents
                   show_position_control: true
                   show_buttons_control: true
                   show_tilt_position_control: false
@@ -103,8 +115,11 @@ views:
                   height: 50
                   entities:
                     - entity: sensor.th_bureau_temperature
+                      show_legend: false
+                    - entity: sensor.th_bureau_humidity
+                      show_legend: false
                 - type: custom:mushroom-cover-card
-                  entity: cover.volet_bureau_window_covering
+                  entity: cover.volet_roulant_bureau
                   show_position_control: false
                   show_buttons_control: true
                   show_tilt_position_control: false
@@ -119,8 +134,11 @@ views:
                   height: 50
                   entities:
                     - entity: sensor.th_salle_jeux_temperature
+                      show_legend: false
+                    - entity: sensor.th_salle_jeux_humidity
+                      show_legend: false
                 - type: custom:mushroom-cover-card
-                  entity: cover.volet_salle_jeux_window_covering
+                  entity: cover.volet_roulant_salle_jeux
                   show_position_control: true
                   show_buttons_control: true
                   show_tilt_position_control: false
@@ -137,6 +155,9 @@ views:
                 height: 80
                 entities:
                   - entity: sensor.th_ext_temperature
+                    show_legend: false
+                  - entity: sensor.th_ext_humidity
+                    show_legend: false
               - type: custom:meteofrance-weather-card
                 entity: weather.mionnay
                 number_of_forecasts: '5'
