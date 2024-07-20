@@ -18,7 +18,7 @@
     input:
       cover: cover.volets_rdc_facade_est
       facade_sun_sensor: binary_sensor.soleil_face_est
-      time_down_late: "22:00:00"
+      time_down_late: "22:30:00"
 - id: 'cover_etage_facade_ouest'
   alias: Volets - Etage - OUEST
   description: 'Gestion auto des volets de l''étage de la facade OUEST'
@@ -39,6 +39,6 @@
     input:
       cover: cover.volets_rdc_facade_ouest
       time_up_early: "06:55:00"
-      time_down_late: "21:00:00"
+      time_down_late: "22:00:00"
       facade_sun_sensor: binary_sensor.soleil_face_ouest
 

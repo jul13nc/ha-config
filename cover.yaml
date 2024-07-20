@@ -1,25 +1,25 @@
 - platform: group
   name: Volets Etage
   entities:
-  - cover.volet_gaetan_window_covering
-  - cover.volet_romain_window_covering
-  - cover.volet_bureau_window_covering
-  - cover.volet_salle_jeux_window_covering
+  - cover.volet_roulant_gaetan
+  - cover.volet_roulant_romain
+  - cover.volet_roulant_bureau
+  - cover.volet_roulant_salle_jeux
 - platform: group
   name: Volets Etage Facade Est
   entities:
-  - cover.volet_gaetan_window_covering
-  - cover.volet_salle_jeux_window_covering
+  - cover.volet_roulant_gaetan
+  - cover.volet_roulant_salle_jeux
 - platform: group
   name: Volets RDC Facade Est
   entities:
-  - cover.volet_salon_window_covering
+  - cover.volet_roulant_salon
 - platform: group
   name: Volets Etage Facade Ouest
   entities:
-  - cover.volet_romain_window_covering
-  - cover.volet_bureau_window_covering
+  - cover.volet_roulant_romain
+  - cover.volet_roulant_bureau
 - platform: group
   name: Volets RDC Facade Ouest
   entities:
-  - cover.volet_parents_window_covering
+  - cover.volet_roulant_parents

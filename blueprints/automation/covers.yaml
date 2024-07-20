@@ -17,7 +17,7 @@ blueprint:
       name: "🔼 Heure min de lever"
       description: >-
         Heure la plus tôt à laquelle le volet s'ouvre si la luminosité le permet.
-      default: "06:45:00"
+      default: "06:40:00"
       selector:
         time: {}
     time_up_early_non_workday:
@@ -206,6 +206,12 @@ action:
                     alias: Somebody home
                 then:
                   - service: cover.open_cover
+                    metadata: {}
+                    data: {}
+                    target:
+                      entity_id: !input cover
+                else:
+                  - service: cover.close_cover
                     metadata: {}
                     data: {}
                     target:

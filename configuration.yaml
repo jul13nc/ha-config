@@ -59,25 +59,28 @@ template:
   - binary_sensor:
       - name: "soleil face Est"
         state: >
-          {{ (state_attr('sun.sun', 'elevation') > 0)
+          {{ (state_attr('sun.sun', 'elevation') > 8)
+           and (state_attr('sun.sun', 'elevation') < 60)
            and (state_attr('sun.sun', 'azimuth') > 0)
            and (state_attr('sun.sun', 'azimuth') < 154 ) }}
   - binary_sensor:
       - name: "soleil face Sud"
         state: >
           {{ (state_attr('sun.sun', 'elevation') > 0)
+           and (state_attr('sun.sun', 'elevation') < 60)
            and (state_attr('sun.sun', 'azimuth') > 78)
            and (state_attr('sun.sun', 'azimuth') < 258 ) }}
   - binary_sensor:
       - name: "soleil face Ouest"
         state: >
-          {{ (state_attr('sun.sun', 'elevation') > 0)
+          {{ (state_attr('sun.sun', 'elevation') > 6.5)
+           and (state_attr('sun.sun', 'elevation') < 60)
            and (state_attr('sun.sun', 'azimuth') > 176)
            and (state_attr('sun.sun', 'azimuth') < 348 ) }}
   - binary_sensor:
       - name: "Jour Dehors"
         state: >
-          {{ (state_attr('sun.sun', 'elevation') > -4) }}
+          {{ (state_attr('sun.sun', 'elevation') > -6) }}
   - sensor:
       - name: Sun Elevation
         unit_of_measurement: "°"
