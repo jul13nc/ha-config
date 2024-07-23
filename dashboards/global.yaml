@@ -146,6 +146,16 @@ views:
                   secondary_info: none
                   icon_type: none
                   layout: horizontal
+            - type: vertical-stack
+              cards:
+                - type: custom:mini-graph-card
+                  name: Garage
+                  height: 50
+                  entities:
+                    - entity: sensor.th_garage_temperature
+                      show_legend: false
+                    - entity: sensor.th_garage_humidity
+                      show_legend: false
       - type: horizontal-stack
         cards:
           - type: vertical-stack
