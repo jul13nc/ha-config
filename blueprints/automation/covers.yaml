@@ -24,7 +24,7 @@ blueprint:
       name: "🔼 Heure min de lever - Jour non travaillé"
       description: >-
         Heure la plus tôt à laquelle le volet s'ouvre si la luminosité le permet. Valable pour les jours non travaillés
-      default: "08:30:00"
+      default: "09:30:00"
       selector:
         time: {}
     time_down_late:

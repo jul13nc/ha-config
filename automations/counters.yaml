@@ -7,10 +7,6 @@
     - sensor.intereau_action
   condition: []
   action:
-  - service: notify.mobile_app_sm_a505fn
-    metadata: {}
-    data:
-      message: TEST
   - service: input_number.set_value
     data:
       value: "{{ states('input_number.water_counter') | int + 1 | int }}"

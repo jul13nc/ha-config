@@ -39,6 +39,7 @@
     input:
       cover: cover.volets_rdc_facade_ouest
       time_up_early: "06:55:00"
+      time_up_early_non_workday: "10:00:00"
       time_down_late: "22:00:00"
       facade_sun_sensor: binary_sensor.soleil_face_ouest
 
