@@ -8,7 +8,7 @@
 - platform: group
   name: Volets Etage Facade Est
   entities:
-  - cover.volet_roulant_gaetan
+  - cover.volet_roulant_gatean
   - cover.volet_roulant_salle_jeux
 - platform: group
   name: Volets RDC Facade Est
