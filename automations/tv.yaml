@@ -39,40 +39,6 @@
       entity_id: scene.lumiere_eteintes
     metadata: {}
   mode: single
-- id: 'autom_switch_wii'
-  alias: Allumer Wii
-  description: ''
-  trigger:
-  - platform: device
-    domain: mqtt
-    device_id: 5fe4f15a80ba31864517d52cd9a8b0f0
-    type: action
-    subtype: 1_double
-    discovery_id: 0xa4c138243c3ac00a action_1_double
-  condition: []
-  action:
-  - type: turn_on
-    device_id: e2374c1ae90a01e1b23c2cd0e32ef0fe
-    entity_id: switch.multiprisetv_l3
-    domain: switch
-  mode: single
-- id: 'auom_switchoff_wii'
-  alias: Eteindre Wii
-  description: ''
-  trigger:
-  - platform: device
-    domain: mqtt
-    device_id: 5fe4f15a80ba31864517d52cd9a8b0f0
-    type: action
-    subtype: 1_hold
-    discovery_id: 0xa4c138243c3ac00a action_1_hold
-  condition: []
-  action:
-  - type: turn_off
-    device_id: e2374c1ae90a01e1b23c2cd0e32ef0fe
-    entity_id: switch.multiprisetv_l3
-    domain: switch
-  mode: single
 - id: 'autom_tv_light_sunset'
   alias: Ambiance TV on Sunset
   description: ''

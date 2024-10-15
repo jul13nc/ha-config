@@ -1,0 +1,56 @@
+- id: 'remote_salon'
+  alias: RemoteSalon
+  description: 'Gestion de la télécommande du salon'
+  use_blueprint:
+    path: remote_4_buttons.yaml
+    input:
+      switch: sensor.remote4boutons_action
+      button_one_short_press:
+        - type: turn_on
+          device_id: e2374c1ae90a01e1b23c2cd0e32ef0fe
+          entity_id: 90cb949b0d0dbbb78b44d3940cb5662f
+          domain: switch
+      button_one_double_press:
+        - type: turn_off
+          device_id: e2374c1ae90a01e1b23c2cd0e32ef0fe
+          entity_id: 90cb949b0d0dbbb78b44d3940cb5662f
+          domain: switch
+      button_two_short_press:
+        - action: scene.turn_on
+          metadata: {}
+          target:
+            entity_id: scene.lumiere_tv_nocturne
+      button_two_double_press:
+        - action: scene.turn_on
+          metadata: {}
+          target:
+            entity_id: scene.lumiere_eteintes
+      button_three_short_press:
+        - action: light.turn_on
+          metadata: {}
+          data:
+            transition: 3
+          target:
+            entity_id:
+              - light.lampebuffet
+              - light.lampeflechettes
+      button_three_double_press:
+        - action: light.turn_off
+          metadata: {}
+          data:
+            transition: 6
+            flash: short
+          target:
+            entity_id:
+              - light.lampebuffet
+              - light.lampeflechettes
+      button_four_short_press:
+        - type: turn_on
+          device_id: 724d8e206f9a96ab64a2963602edf631
+          entity_id: 5f36fcb86a27b9724408d64ee980e5de
+          domain: switch
+      button_four_double_press:
+        - type: turn_off
+          device_id: 724d8e206f9a96ab64a2963602edf631
+          entity_id: 5f36fcb86a27b9724408d64ee980e5de
+          domain: switch
