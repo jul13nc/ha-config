@@ -37,9 +37,6 @@
       button_three_double_press:
         - action: light.turn_off
           metadata: {}
-          data:
-            transition: 6
-            flash: short
           target:
             entity_id:
               - light.lampebuffet
