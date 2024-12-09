@@ -8,6 +8,7 @@
     input:
       cover: cover.volets_etage_facade_est
       facade_sun_sensor: binary_sensor.soleil_face_est
+      time_up_early_monday: "07:35:00"
 - id: 'cover_rdc_facade_est'
   alias: Volets - RDC - EST
   description: 'Gestion auto des volets RDC de la facade EST'
@@ -18,6 +19,7 @@
     input:
       cover: cover.volets_rdc_facade_est
       facade_sun_sensor: binary_sensor.soleil_face_est
+      time_up_early_non_workday: "08:00:00"
       time_down_late: "22:30:00"
 - id: 'cover_etage_facade_ouest'
   alias: Volets - Etage - OUEST
@@ -28,6 +30,7 @@
     path: covers.yaml
     input:
       cover: cover.volets_etage_facade_ouest
+      time_up_early_wednesday: "08:30:00"
       facade_sun_sensor: binary_sensor.soleil_face_ouest
 - id: 'cover_rdc_facade_ouest'
   alias: Volets - RDC - OUEST
@@ -38,7 +41,13 @@
     path: covers.yaml
     input:
       cover: cover.volets_rdc_facade_ouest
-      time_up_early: "06:55:00"
+      time_up_early_monday: "06:55:00"
+      time_up_early_tuesday: "06:55:00"
+      time_up_early_wednesday: "08:30:00"
+      time_up_early_thursday: "06:55:00"
+      time_up_early_friday: "06:55:00"
+      time_up_early_saturday: "10:00:00"
+      time_up_early_sunday: "10:00:00"
       time_up_early_non_workday: "10:00:00"
       time_down_late: "22:00:00"
       facade_sun_sensor: binary_sensor.soleil_face_ouest

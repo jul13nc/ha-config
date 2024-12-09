@@ -13,11 +13,59 @@ blueprint:
           filter:
             - domain:
                 - cover
-    time_up_early:
-      name: "🔼 Heure min de lever"
+    time_up_early_monday:
+      name: "🔼 Heures min de lever Lundi"
+      description: >-
+        Heures la plus tôt à laquelle le volet s'ouvre si la luminosité le permet.
+        Au format tableau pour chaque jour de la semaine
+      default: "06:40:00"
+      selector:
+        time: {}
+    time_up_early_tuesday:
+      name: "🔼 Heures min de lever Mardi"
+      description: >-
+        Heures la plus tôt à laquelle le volet s'ouvre si la luminosité le permet.
+        Au format tableau pour chaque jour de la semaine
+      default: "06:40:00"
+      selector:
+        time: {}
+    time_up_early_wednesday:
+      name: "🔼 Heures min de lever Mercredi"
+      description: >-
+        Heures la plus tôt à laquelle le volet s'ouvre si la luminosité le permet.
+        Au format tableau pour chaque jour de la semaine
+      default: "06:40:00"
+      selector:
+        time: {}
+    time_up_early_thursday:
+      name: "🔼 Heures min de lever Jeudi"
+      description: >-
+        Heures la plus tôt à laquelle le volet s'ouvre si la luminosité le permet.
+        Au format tableau pour chaque jour de la semaine
+      default: "06:40:00"
+      selector:
+        time: {}
+    time_up_early_friday:
+      name: "🔼 Heures min de lever Vendredi"
+      description: >-
+        Heures la plus tôt à laquelle le volet s'ouvre si la luminosité le permet.
+        Au format tableau pour chaque jour de la semaine
+      default: "06:40:00"
+      selector:
+        time: {}
+    time_up_early_saturday:
+      name: "🔼 Heures min de lever Samedi"
+      description: >-
+        Heures la plus tôt à laquelle le volet s'ouvre si la luminosité le permet.
+        Au format tableau pour chaque jour de la semaine
+      default: "08:30:00"
+      selector:
+        time: {}
+    time_up_early_sunday:
+      name: "🔼 Heures min de lever Dimanche"
       description: >-
         Heure la plus tôt à laquelle le volet s'ouvre si la luminosité le permet.
-      default: "06:40:00"
+      default: "08:30:00"
       selector:
         time: {}
     time_up_early_non_workday:
@@ -58,7 +106,13 @@ blueprint:
               - binary_sensor
 
 trigger_variables:
-  time_up_early: !input time_up_early
+  time_up_early_monday: !input time_up_early_monday
+  time_up_early_tuesday: !input time_up_early_tuesday
+  time_up_early_wednesday: !input time_up_early_wednesday
+  time_up_early_thursday: !input time_up_early_thursday
+  time_up_early_friday: !input time_up_early_friday
+  time_up_early_saturday: !input time_up_early_saturday
+  time_up_early_sunday: !input time_up_early_sunday
   time_up_early_non_workday: !input time_up_early_non_workday
   time_down_late: !input time_down_late
   workday_sensor: !input workday_sensor
@@ -67,7 +121,10 @@ trigger_variables:
 variables:
   time_up_today:  >-
     {% if is_state(workday_sensor, 'on') %}
-      {{ time_up_early }}
+      {% set time_up_days = [time_up_early_monday, time_up_early_tuesday, 
+          time_up_early_wednesday, time_up_early_thursday, 
+          time_up_early_friday, time_up_early_saturday, time_up_early_sunday] %}
+      {{ time_up_days[now().weekday()] }}
     {% else %}
       {{ time_up_early_non_workday }}
     {% endif %}
@@ -99,10 +156,13 @@ trigger:
   ## TIME TO OPEN COVERS
   - platform: template
     value_template: >-
-      {% if is_state(workday_sensor, 'off') %}
-        {{ is_state(sunny_outside_sensor, 'on') and now() >= today_at(time_up_early_non_workday) }}
+      {% if is_state(workday_sensor, 'on') %}
+        {% set time_up_days = [time_up_early_monday, time_up_early_tuesday, 
+            time_up_early_wednesday, time_up_early_thursday, 
+            time_up_early_friday, time_up_early_saturday, time_up_early_sunday] %}
+        {{ is_state(sunny_outside_sensor, 'on') and now() >= today_at(time_up_days[now().weekday()]) }}
       {% else %}
-        {{ is_state(sunny_outside_sensor, 'on') and now() >= today_at(time_up_early) }}
+        {{ is_state(sunny_outside_sensor, 'on') and now() >= today_at(time_up_early_non_workday) }}
       {% endif %}
     id: "time_up"
   ## TIME TO CLOSE COVERS
