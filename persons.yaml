@@ -1,7 +1,7 @@
 - name: Julien
   id: julien
   device_trackers:
-    - device_tracker.galaxy_a50
+    - device_tracker.a35_de_julien
 - name: Virginie
   id: virginie
   device_trackers:

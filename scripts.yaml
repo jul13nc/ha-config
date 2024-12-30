@@ -30,7 +30,7 @@ notif_parent_maison:
         entity_id: person.julien
         state: home
       then:
-      - service: notify.mobile_app_sm_a505fn
+      - service: notify.mobile_app_sm_a356b
         metadata: {}
         data:
           title: '{{ titre }}'
