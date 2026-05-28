@@ -1,0 +1,59 @@
+- id: '1751228111692'
+  alias: Fermeture volets Lever Jour
+  description: ''
+  triggers:
+  - trigger: time
+    at: 05:20:00
+    enabled: false
+  - trigger: state
+    entity_id:
+    - binary_sensor.jour_dehors
+    from:
+    - 'off'
+    to:
+    - 'on'
+  conditions: []
+  actions:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.volet_roulant_gaetan
+      - cover.volet_roulant_romain
+      - cover.volet_roulant_parents
+  mode: single
+- id: '1754849030136'
+  alias: WarningSunSUD
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.soleil_face_sud
+    from: 'off'
+    to: 'on'
+  conditions: []
+  actions:
+  - action: script.notif_parent_maison
+    metadata: {}
+    data:
+      message: Volets SUD
+      titre: Il est temps de fermer les volets de la façade SUD
+  mode: single
+- id: '1754849085808'
+  alias: WarningVoletsOUEST
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.soleil_face_ouest
+    from: 'off'
+    to: 'on'
+  conditions: []
+  actions:
+  - action: script.notif_parent_maison
+    metadata: {}
+    data:
+      message: Volets OUEST
+      titre: Il est temps de fermer les volets de la façade OUEST
+  mode: single

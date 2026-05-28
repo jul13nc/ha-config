@@ -60,7 +60,7 @@ views:
                     - entity: sensor.th_ch_gaetan_humidity
                       show_legend: false
                 - type: custom:mushroom-cover-card
-                  entity: cover.volet_roulant_gatean
+                  entity: cover.volet_roulant_gaetan
                   show_position_control: false
                   show_buttons_control: true
                   show_tilt_position_control: false
