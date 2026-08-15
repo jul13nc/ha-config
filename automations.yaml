@@ -19,9 +19,8 @@
     data: {}
     target:
       entity_id:
-      - cover.volet_roulant_gaetan
       - cover.volet_roulant_romain
-      - cover.volet_roulant_parents
+      - cover.volet_roulant_gaetan
   mode: single
 - id: '1754849030136'
   alias: WarningSunSUD

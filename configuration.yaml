@@ -43,10 +43,10 @@ lovelace:
       require_admin: true
 
 calendar:
-  - platform: caldav
-    username: !secret syno_user
-    password: !secret syno_password
-    url: !secret caldav_url
+ - platform: caldav
+   username: !secret syno_user
+   password: !secret syno_password
+   url: !secret caldav_url
 
 template:
   - binary_sensor:
@@ -60,27 +60,27 @@ template:
       - name: "soleil face Est"
         state: >
           {{ (state_attr('sun.sun', 'elevation') > 8)
-           and (state_attr('sun.sun', 'elevation') < 60)
+           and (state_attr('sun.sun', 'elevation') < 80)
            and (state_attr('sun.sun', 'azimuth') > 0)
            and (state_attr('sun.sun', 'azimuth') < 154 ) }}
   - binary_sensor:
       - name: "soleil face Sud"
         state: >
           {{ (state_attr('sun.sun', 'elevation') > 0)
-           and (state_attr('sun.sun', 'elevation') < 60)
-           and (state_attr('sun.sun', 'azimuth') > 78)
-           and (state_attr('sun.sun', 'azimuth') < 258 ) }}
+           and (state_attr('sun.sun', 'elevation') < 80)
+           and (state_attr('sun.sun', 'azimuth') > 82)
+           and (state_attr('sun.sun', 'azimuth') < 248 ) }}
   - binary_sensor:
       - name: "soleil face Ouest"
         state: >
           {{ (state_attr('sun.sun', 'elevation') > 6.5)
-           and (state_attr('sun.sun', 'elevation') < 60)
+           and (state_attr('sun.sun', 'elevation') < 80)
            and (state_attr('sun.sun', 'azimuth') > 176)
            and (state_attr('sun.sun', 'azimuth') < 348 ) }}
   - binary_sensor:
       - name: "Jour Dehors"
         state: >
-          {{ (state_attr('sun.sun', 'elevation') > -6) }}
+          {{ (state_attr('sun.sun', 'elevation') > -7) }}
   - sensor:
       - name: Sun Elevation
         unit_of_measurement: "°"
@@ -93,13 +93,12 @@ template:
       - name: vacances_scolaires_aujourdhui
         unique_id: binary_sensor.vacances_scolaires_aujourdhui
         icon: mdi:calendar-today
-        state: |-
-          {% set aujourdhui = now().strftime('%Y-%m-%d')%}
-          {% if aujourdhui < state_attr('sensor.vacances_scolaires', 'start_date') or aujourdhui > state_attr('sensor.vacances_scolaires', 'end_date') %}
-          false
-          {% else %} 
-          true
-          {% endif %}
+        state: >-
+          {% set aujourdhui = now().strftime('%Y-%m-%d') %}
+          {% set start = state_attr('sensor.vacances_scolaires', 'start_date') %}
+          {% set end = state_attr('sensor.vacances_scolaires', 'end_date') %}
+
+          {{ start is not none and end is not none and start <= aujourdhui <= end }}
   - binary_sensor:
       - name: jourTravail
         unique_id: binary_sensor.jour_travail_aujourdhui
@@ -123,6 +122,7 @@ template:
         state: "{{ states('input_number.water_counter') | int / 1000 | round(3) }}"
         device_class: water
         state_class: total_increasing
+
 
 input_number:
   gaz_counter :

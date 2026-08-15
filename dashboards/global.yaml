@@ -10,11 +10,18 @@ views:
                 - type: custom:mini-graph-card
                   name: Salon
                   height: 50
+                  decimals: 1
                   entities:
                     - entity: sensor.th_salon_temperature
                       show_legend: false
                     - entity: sensor.th_salon_humidity
-                      show_legend: false
+                      y_axis: secondary
+                    - entity: sensor.thermal_comfort_salon_indice_de_chaleur
+                      name: Ressenti (Humidex)
+                      show_graph: false # Vous pouvez le mettre à false si vous voulez juste voir le chiffre sans la courbe
+                      show_state: true
+                      unit: ''
+                      state_adaptive_color: true
                 - type: custom:mushroom-cover-card
                   entity: cover.volet_roulant_salon
                   fill_container: false
@@ -163,19 +170,30 @@ views:
               - type: custom:mini-graph-card
                 name: EXT
                 height: 80
+                decimals: 1
                 entities:
                   - entity: sensor.th_ext_temperature
                     show_legend: false
                   - entity: sensor.th_ext_humidity
                     show_legend: false
+                  - entity: sensor.thermal_comfort_ext_indice_de_chaleur
+                    name: Ressenti (Humidex)
+                    show_graph: false # Vous pouvez le mettre à false si vous voulez juste voir le chiffre sans la courbe
+                    show_state: true
+                    unit: ''
+                    state_adaptive_color: true
+              - type: tile
+                entity: switch.prisepiscine
+                features:
+                  - type: toggle
               - type: custom:meteofrance-weather-card
                 entity: weather.mionnay
                 number_of_forecasts: '5'
                 name: Mionnay
-                current: true
-                one_hour_forecast: true
+                current: false
+                one_hour_forecast: false
                 forecast: true
-                details: true
+                details: false
                 alert_forecast: true
                 animated_icons: true
                 cloudCoverEntity: sensor.mionnay_cloud_cover
@@ -185,6 +203,10 @@ views:
                 uvEntity: sensor.mionnay_uv
                 rainForecastEntity: sensor.mionnay_next_rain
                 alertEntity: sensor.01_weather_alert
+                wind_forecast_icons: false
+                daily_forecast: false
+                hourly_forecast: true
+                hourly_forecast_details: false
               - type: custom:button-card
                 name: Lancer aspirateur
                 icon: mdi:vacuum
