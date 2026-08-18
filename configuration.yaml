@@ -68,7 +68,7 @@ template:
         state: >
           {{ (state_attr('sun.sun', 'elevation') > 0)
            and (state_attr('sun.sun', 'elevation') < 80)
-           and (state_attr('sun.sun', 'azimuth') > 82)
+           and (state_attr('sun.sun', 'azimuth') > 81)
            and (state_attr('sun.sun', 'azimuth') < 248 ) }}
   - binary_sensor:
       - name: "soleil face Ouest"
