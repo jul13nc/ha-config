@@ -1,0 +1,38 @@
+views:
+  - title: Interphone
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: picture-entity
+            show_state: false
+            show_name: false
+            camera_view: auto
+            fit_mode: cover
+            entity: camera.ezviz_hpd7_bk0229016_bk0227784_direct
+            camera_image: camera.ezviz_hpd7_bk0229016_bk0227784_directhe
+          - type: horizontal-stack
+            cards:
+              - type: button
+                entity: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portail
+                name: Portail
+                icon: mdi:gate
+                show_state: false
+                tap_action:
+                  action: perform-action
+                  perform_action: button.press
+                  target:
+                    entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portail
+                  confirmation:
+                    text: "Ouvrir le portail ?"
+              - type: button
+                entity: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
+                name: Portillon
+                icon: mdi:door
+                show_state: false
+                tap_action:
+                  action: perform-action
+                  perform_action: button.press
+                  target:
+                    entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
+                  confirmation:
+                    text: "Ouvrir le portillon ?"

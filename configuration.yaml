@@ -34,6 +34,12 @@ lovelace:
       icon: mdi:lightbulb-multiple-outline
       show_in_sidebar: true
       filename: dashboards/global.yaml
+    visio-yaml:
+      mode: yaml
+      title: Visiophone
+      icon: mdi:devices
+      show_in_sidebar: true
+      filename: dashboards/visiophone.yaml
     config-yaml:
       mode: yaml
       title: Config

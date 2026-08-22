@@ -48,12 +48,16 @@ views:
               cards:
                 - type: custom:mushroom-light-card
                   entity: light.lampetele
+                  name: Tele
                 - type: custom:mushroom-light-card
                   entity: light.lampecanape
+                  name: Canape
                 - type: custom:mushroom-light-card
                   entity: light.lampeflechettes
+                  name: Flechettes
                 - type: custom:mushroom-light-card
                   entity: light.lampebuffet
+                  name: Buffet
         - type: horizontal-stack
           cards:
             - type: vertical-stack
@@ -182,10 +186,6 @@ views:
                     show_state: true
                     unit: ''
                     state_adaptive_color: true
-              - type: tile
-                entity: switch.prisepiscine
-                features:
-                  - type: toggle
               - type: custom:meteofrance-weather-card
                 entity: weather.mionnay
                 number_of_forecasts: '5'
@@ -207,9 +207,8 @@ views:
                 daily_forecast: false
                 hourly_forecast: true
                 hourly_forecast_details: false
-              - type: custom:button-card
+              - type: tile
                 name: Lancer aspirateur
-                icon: mdi:vacuum
                 layout: icon_name
                 size: 20%
                 entity: vacuum.robot_aspirateur
@@ -218,8 +217,7 @@ views:
                   entity: vacuum.robot_aspirateur
                   confirmation:
                     text: >-
-                      [[[ return `Etes vous sur de vouloir démarrer
-                      ${entity.attributes.friendly_name}?` ]]]
+                      Etes vous sur de vouloir démarrer le nettoyage ?
                   service: vacuum.start
                   service_data:
                     entity_id: entity
