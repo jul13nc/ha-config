@@ -208,19 +208,9 @@ views:
                 hourly_forecast: true
                 hourly_forecast_details: false
               - type: tile
-                name: Lancer aspirateur
-                layout: icon_name
-                size: 20%
                 entity: vacuum.robot_aspirateur
-                tap_action:
-                  action: call-service
-                  entity: vacuum.robot_aspirateur
-                  confirmation:
-                    text: >-
-                      Etes vous sur de vouloir démarrer le nettoyage ?
-                  service: vacuum.start
-                  service_data:
-                    entity_id: entity
+                features:
+                  - type: vacuum-commands
               - type: custom:mushroom-select-card
                 entity: input_select.modevolets
                 icon: mdi:window-shutter-cog

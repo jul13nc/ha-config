@@ -8,7 +8,7 @@ ambiance_tv:
     - condition: device
       type: is_on
       device_id: a744a962360332b9705e8f8af18a2eab
-      entity_id: 1d3e677fc01c388a39bb9ea03b8cce3b
+      entity_id: media_player.freebox_player_pop_2
       domain: remote
     then:
     - service: scene.turn_on
