@@ -15,8 +15,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "68.125%"
-              top: "50.385%"
+              left: "81.479%"
+              top: "49.399%"
               color: "#d2f3ff"
               font-weight: "600"
               font-size: clamp(10px, 1.5vw, 23px)
@@ -27,8 +27,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "25.625%"
-              top: "78.846%"
+              left: "27.424%"
+              top: "83.626%"
               color: "#d2f3ff"
               font-weight: "600"
               font-size: clamp(10px, 1.5vw, 23px)
@@ -39,8 +39,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "51.250%"
-              top: "76.923%"
+              left: "60.016%"
+              top: "81.314%"
               color: "#d2f3ff"
               font-weight: "600"
               font-size: clamp(10px, 1.5vw, 23px)
@@ -51,8 +51,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "13.125%"
-              top: "48.462%"
+              left: "11.526%"
+              top: "47.087%"
               color: "#d2f3ff"
               font-weight: "600"
               font-size: clamp(10px, 1.5vw, 23px)
@@ -67,8 +67,8 @@ views:
             hold_action:
               action: more-info
             style:
-              left: "77.55%"
-              top: "39.868%"
+              left: "93.466%"
+              top: "36.752%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
@@ -81,8 +81,8 @@ views:
             hold_action:
               action: more-info
             style:
-              left: "66.25%"
-              top: "36.923%"
+              left: "79.094%"
+              top: "33.21%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
@@ -95,8 +95,8 @@ views:
             hold_action:
               action: more-info
             style:
-              left: "75.625%"
-              top: "66.923%"
+              left: "91.017%"
+              top: "69.288%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
@@ -109,8 +109,8 @@ views:
             hold_action:
               action: more-info
             style:
-              left: "56.875%"
-              top: "66.923%"
+              left: "67.17%"
+              top: "69.288%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
@@ -120,8 +120,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "44.375%"
-              top: "55.769%"
+              left: "51.272%"
+              top: "55.874%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
@@ -131,8 +131,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "78.750%"
-              top: "53.462%"
+              left: "94.992%"
+              top: "53.1%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
@@ -142,8 +142,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "7.812%"
-              top: "40.000%"
+              left: "4.769%"
+              top: "36.91%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           # Visiophone : clic = popup (browser_mod) avec Portail / Portillon
@@ -197,8 +197,8 @@ views:
             hold_action:
               action: more-info
             style:
-              left: "49.3%"
-              top: "63%"
+              left: "57.536%"
+              top: "64.57%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           # Bloc météo : se pose dans le cadre "MÉTÉO DU JOUR" du plan
@@ -221,9 +221,9 @@ views:
             rainForecastEntity: sensor.mionnay_next_rain
             alertEntity: sensor.01_weather_alert
             style:
-              left: "71.1%"
-              top: "84.1%"
-              width: "31%"
+              left: "83.148%"
+              top: "89.5%"
+              width: "31.081%"
               --ha-card-background: transparent
               --ha-card-box-shadow: none
               --primary-text-color: "#d2f3ff"
@@ -241,8 +241,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "14.688%"
-              top: "43.846%"
+              left: "20.675%"
+              top: "18.556%"
               color: "#d2f3ff"
               font-weight: "600"
               font-size: clamp(10px, 1.5vw, 23px)
@@ -253,8 +253,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "11.875%"
-              top: "65.385%"
+              left: "15.191%"
+              top: "54.64%"
               color: "#d2f3ff"
               font-weight: "600"
               font-size: clamp(10px, 1.5vw, 23px)
@@ -265,8 +265,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "36.875%"
-              top: "83.846%"
+              left: "63.932%"
+              top: "85.567%"
               color: "#d2f3ff"
               font-weight: "600"
               font-size: clamp(10px, 1.5vw, 23px)
@@ -277,8 +277,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "36.875%"
-              top: "57.692%"
+              left: "63.932%"
+              top: "41.752%"
               color: "#d2f3ff"
               font-weight: "600"
               font-size: clamp(10px, 1.5vw, 23px)
@@ -290,8 +290,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "7.812%"
-              top: "43.077%"
+              left: "7.27%"
+              top: "17.268%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
@@ -301,8 +301,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "7.812%"
-              top: "57.692%"
+              left: "7.27%"
+              top: "41.752%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
@@ -312,8 +312,8 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "43.750%"
-              top: "80.769%"
+              left: "77.335%"
+              top: "80.412%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
@@ -323,7 +323,7 @@ views:
             tap_action:
               action: more-info
             style:
-              left: "43.750%"
-              top: "43.462%"
+              left: "77.335%"
+              top: "17.913%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
