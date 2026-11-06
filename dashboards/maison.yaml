@@ -125,17 +125,6 @@ views:
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
-            entity: cover.portail
-            title: "Portail — derrière la porte d’entrée"
-            icon: mdi:gate
-            tap_action:
-              action: more-info
-            style:
-              left: "49.375%"
-              top: "63.077%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          - type: state-icon
             entity: cover.volet_roulant_salon
             title: "Volet salon — fenêtre est"
             state_color: true
@@ -157,6 +146,88 @@ views:
               top: "40.000%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          # Visiophone : clic = popup (browser_mod) avec Portail / Portillon
+          - type: state-icon
+            entity: camera.ezviz_hpd7_bk0229016_bk0227784_direct
+            title: "Visiophone — ouvrir le portail ou le portillon"
+            icon: mdi:door-phone
+            tap_action:
+              action: fire-dom-event
+              browser_mod:
+                service: browser_mod.popup
+                data:
+                  title: "Visiophone"
+                  icon: mdi:door-phone
+                  content:
+                    type: vertical-stack
+                    cards:
+                      - type: picture-entity
+                        show_state: false
+                        show_name: false
+                        camera_view: auto
+                        fit_mode: cover
+                        entity: camera.ezviz_hpd7_bk0229016_bk0227784_direct
+                        camera_image: camera.ezviz_hpd7_bk0229016_bk0227784_directhe
+                      - type: horizontal-stack
+                        cards:
+                          - type: button
+                            entity: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portail
+                            name: Portail
+                            icon: mdi:gate
+                            show_state: false
+                            tap_action:
+                              action: perform-action
+                              perform_action: button.press
+                              target:
+                                entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portail
+                              confirmation:
+                                text: "Ouvrir le portail ?"
+                          - type: button
+                            entity: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
+                            name: Portillon
+                            icon: mdi:door
+                            show_state: false
+                            tap_action:
+                              action: perform-action
+                              perform_action: button.press
+                              target:
+                                entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
+                              confirmation:
+                                text: "Ouvrir le portillon ?"
+            hold_action:
+              action: more-info
+            style:
+              left: "48.5%"
+              top: "67%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          # Bloc météo : se pose dans le cadre "MÉTÉO DU JOUR" du plan
+          - type: custom:meteofrance-weather-card
+            entity: weather.mionnay
+            current: false
+            details: false
+            alert_forecast: false
+            one_hour_forecast: false
+            hourly_forecast: true
+            number_of_hourly_forecasts: "5"
+            daily_forecast: false
+            hourly_details: false
+            animated_icons: true
+            cloudCoverEntity: sensor.mionnay_cloud_cover
+            rainChanceEntity: sensor.mionnay_rain_chance
+            freezeChanceEntity: sensor.mionnay_freeze_chance
+            snowChanceEntity: sensor.mionnay_snow_chance
+            uvEntity: sensor.mionnay_uv
+            rainForecastEntity: sensor.mionnay_next_rain
+            alertEntity: sensor.01_weather_alert
+            style:
+              left: "78.9%"
+              top: "86.5%"
+              width: "31%"
+              --ha-card-background: transparent
+              --ha-card-box-shadow: none
+              --primary-text-color: "#d2f3ff"
+              --secondary-text-color: "#83b1c9"
   - title: Étage
     path: etage
     type: panel
