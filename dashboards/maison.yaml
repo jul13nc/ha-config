@@ -150,14 +150,14 @@ views:
           - type: state-icon
             entity: camera.ezviz_hpd7_bk0229016_bk0227784_direct
             title: "Visiophone — ouvrir le portail ou le portillon"
-            icon: mdi:door-phone
+            icon: mdi:doorbell-video
             tap_action:
               action: fire-dom-event
               browser_mod:
                 service: browser_mod.popup
                 data:
                   title: "Visiophone"
-                  icon: mdi:door-phone
+                  icon: mdi:doorbell-video
                   content:
                     type: vertical-stack
                     cards:
