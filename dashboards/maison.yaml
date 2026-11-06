@@ -67,8 +67,8 @@ views:
             hold_action:
               action: more-info
             style:
-              left: "77.475%"
-              top: "40.368%"
+              left: "77.55%"
+              top: "39.868%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           - type: state-icon
@@ -81,7 +81,7 @@ views:
             hold_action:
               action: more-info
             style:
-              left: "67.325%"
+              left: "66.25%"
               top: "36.923%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
@@ -197,8 +197,8 @@ views:
             hold_action:
               action: more-info
             style:
-              left: "48.5%"
-              top: "67%"
+              left: "49.3%"
+              top: "63%"
               color: "#83b1c9"
               --mdc-icon-size: clamp(18px, 2.2vw, 32px)
           # Bloc météo : se pose dans le cadre "MÉTÉO DU JOUR" du plan
@@ -209,7 +209,7 @@ views:
             alert_forecast: false
             one_hour_forecast: false
             hourly_forecast: true
-            number_of_hourly_forecasts: "5"
+            number_of_hourly_forecasts: "4"
             daily_forecast: false
             hourly_details: false
             animated_icons: true
@@ -221,8 +221,8 @@ views:
             rainForecastEntity: sensor.mionnay_next_rain
             alertEntity: sensor.01_weather_alert
             style:
-              left: "78.9%"
-              top: "86.5%"
+              left: "71.1%"
+              top: "84.1%"
               width: "31%"
               --ha-card-background: transparent
               --ha-card-box-shadow: none
