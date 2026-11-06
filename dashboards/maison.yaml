@@ -1,0 +1,258 @@
+# Exemple de tableau de bord. Remplacer les 21 identifiants d’entités.
+# Copier les PNG dans /config/www/plans/ avant utilisation.
+title: Maison
+views:
+  - title: RDC
+    path: rdc
+    type: panel
+    cards:
+      - type: picture-elements
+        image: /local/plans/home-assistant-rdc.png
+        elements:
+          - type: state-label
+            entity: sensor.th_salon_temperature
+            title: "Température salon"
+            tap_action:
+              action: more-info
+            style:
+              left: "68.125%"
+              top: "50.385%"
+              color: "#d2f3ff"
+              font-weight: "600"
+              font-size: clamp(10px, 1.5vw, 23px)
+              white-space: nowrap
+          - type: state-label
+            entity: sensor.th_garage_temperature
+            title: "Température garage"
+            tap_action:
+              action: more-info
+            style:
+              left: "25.625%"
+              top: "78.846%"
+              color: "#d2f3ff"
+              font-weight: "600"
+              font-size: clamp(10px, 1.5vw, 23px)
+              white-space: nowrap
+          - type: state-label
+            entity: sensor.th_ext_temperature
+            title: "Température extérieure"
+            tap_action:
+              action: more-info
+            style:
+              left: "51.250%"
+              top: "76.923%"
+              color: "#d2f3ff"
+              font-weight: "600"
+              font-size: clamp(10px, 1.5vw, 23px)
+              white-space: nowrap
+          - type: state-label
+            entity: sensor.th_ch_parents_temperature
+            title: "Température chambre RDC"
+            tap_action:
+              action: more-info
+            style:
+              left: "13.125%"
+              top: "48.462%"
+              color: "#d2f3ff"
+              font-weight: "600"
+              font-size: clamp(10px, 1.5vw, 23px)
+              white-space: nowrap
+          - type: state-icon
+            entity: light.lampetele
+            title: "Luminaire salon 1 — mur droit, au-dessus de la baie"
+            icon: mdi:lightbulb
+            state_color: true
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            style:
+              left: "77.475%"
+              top: "40.368%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          - type: state-icon
+            entity: light.lampecanape
+            title: "Luminaire salon 2 — mur sous la porte-fenêtre cuisine"
+            icon: mdi:lightbulb
+            state_color: true
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            style:
+              left: "67.325%"
+              top: "36.923%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          - type: state-icon
+            entity: light.lampebuffet
+            title: "Luminaire salon 3 — mur bas, coin opposé à la cuisine"
+            icon: mdi:lightbulb
+            state_color: true
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            style:
+              left: "75.625%"
+              top: "66.923%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          - type: state-icon
+            entity: light.lampeflechettes
+            title: "Luminaire salon 4 — entre entrée et porte-fenêtre"
+            icon: mdi:lightbulb
+            state_color: true
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            style:
+              left: "56.875%"
+              top: "66.923%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          - type: state-icon
+            entity: vacuum.robot_aspirateur
+            title: "Aspirateur robot — près de la SDB et du dégagement"
+            icon: mdi:robot-vacuum
+            tap_action:
+              action: more-info
+            style:
+              left: "44.375%"
+              top: "55.769%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          - type: state-icon
+            entity: cover.portail
+            title: "Portail — derrière la porte d’entrée"
+            icon: mdi:gate
+            tap_action:
+              action: more-info
+            style:
+              left: "49.375%"
+              top: "63.077%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          - type: state-icon
+            entity: cover.volet_roulant_salon
+            title: "Volet salon — fenêtre est"
+            state_color: true
+            tap_action:
+              action: more-info
+            style:
+              left: "78.750%"
+              top: "53.462%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          - type: state-icon
+            entity: cover.volet_roulant_parents
+            title: "Volet chambre RDC"
+            state_color: true
+            tap_action:
+              action: more-info
+            style:
+              left: "7.812%"
+              top: "40.000%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+  - title: Étage
+    path: etage
+    type: panel
+    cards:
+      - type: picture-elements
+        image: /local/plans/home-assistant-etage.png
+        elements:
+          - type: state-label
+            entity: sensor.th_bureau_temperature
+            title: "Température chambre 1"
+            tap_action:
+              action: more-info
+            style:
+              left: "14.688%"
+              top: "43.846%"
+              color: "#d2f3ff"
+              font-weight: "600"
+              font-size: clamp(10px, 1.5vw, 23px)
+              white-space: nowrap
+          - type: state-label
+            entity: sensor.th_ch_romain_temperature
+            title: "Température chambre 2"
+            tap_action:
+              action: more-info
+            style:
+              left: "11.875%"
+              top: "65.385%"
+              color: "#d2f3ff"
+              font-weight: "600"
+              font-size: clamp(10px, 1.5vw, 23px)
+              white-space: nowrap
+          - type: state-label
+            entity: sensor.th_ch_gaetan_temperature
+            title: "Température chambre 3"
+            tap_action:
+              action: more-info
+            style:
+              left: "36.875%"
+              top: "83.846%"
+              color: "#d2f3ff"
+              font-weight: "600"
+              font-size: clamp(10px, 1.5vw, 23px)
+              white-space: nowrap
+          - type: state-label
+            entity: sensor.th_salle_jeux_temperature
+            title: "Température salle de jeux"
+            tap_action:
+              action: more-info
+            style:
+              left: "36.875%"
+              top: "57.692%"
+              color: "#d2f3ff"
+              font-weight: "600"
+              font-size: clamp(10px, 1.5vw, 23px)
+              white-space: nowrap
+          - type: state-icon
+            entity: cover.volet_roulant_bureau
+            title: "Volet chambre 1"
+            state_color: true
+            tap_action:
+              action: more-info
+            style:
+              left: "7.812%"
+              top: "43.077%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          - type: state-icon
+            entity: cover.volet_roulant_romain
+            title: "Volet chambre 2"
+            state_color: true
+            tap_action:
+              action: more-info
+            style:
+              left: "7.812%"
+              top: "57.692%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          - type: state-icon
+            entity: cover.volet_roulant_gaetan
+            title: "Volet chambre 3"
+            state_color: true
+            tap_action:
+              action: more-info
+            style:
+              left: "43.750%"
+              top: "80.769%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+          - type: state-icon
+            entity: cover.volet_roulant_salle_jeux
+            title: "Volet salle de jeux"
+            state_color: true
+            tap_action:
+              action: more-info
+            style:
+              left: "43.750%"
+              top: "43.462%"
+              color: "#83b1c9"
+              --mdc-icon-size: clamp(18px, 2.2vw, 32px)

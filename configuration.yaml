@@ -47,6 +47,13 @@ lovelace:
       show_in_sidebar: true
       filename: dashboards/config.yaml
       require_admin: true
+    plans-yaml:
+      mode: yaml
+      title: Plans
+      icon: mdi:food
+      show_in_sidebar: true
+      filename: dashboards/maison.yaml
+      require_admin: true
 
 calendar:
  - platform: caldav
