@@ -8,7 +8,7 @@
 !dashboards/
 !automations/
 !blueprints/
-!www/plans/*
+!www/plans/
 
 # Ignore folders.
 .storage
