@@ -54,6 +54,12 @@ lovelace:
       show_in_sidebar: true
       filename: dashboards/maison.yaml
       require_admin: true
+    plans-mobile-yaml:
+      mode: yaml
+      title: Plans mobile
+      icon: mdi:cellphone
+      show_in_sidebar: true
+      filename: dashboards/maison-mobile.yaml
 
 calendar:
  - platform: caldav

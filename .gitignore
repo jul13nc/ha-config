@@ -8,8 +8,9 @@
 !dashboards/
 !automations/
 !blueprints/
-!www/plans/home-assistant-rdc.png
-!www/plans/home-assistant-etage.png
+!www/
+!www/plans/
+!www/plans/*.png
 
 # Ignore folders.
 .storage
