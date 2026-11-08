@@ -6,324 +6,388 @@ views:
     path: rdc
     type: panel
     cards:
-      - type: picture-elements
-        image: /local/plans/home-assistant-rdc.png
-        elements:
-          - type: state-label
-            entity: sensor.th_salon_temperature
-            title: "Température salon"
-            tap_action:
-              action: more-info
-            style:
-              left: "81.479%"
-              top: "49.399%"
-              color: "#d2f3ff"
-              font-weight: "600"
-              font-size: clamp(10px, 1.5vw, 23px)
-              white-space: nowrap
-          - type: state-label
-            entity: sensor.th_garage_temperature
-            title: "Température garage"
-            tap_action:
-              action: more-info
-            style:
-              left: "27.424%"
-              top: "83.626%"
-              color: "#d2f3ff"
-              font-weight: "600"
-              font-size: clamp(10px, 1.5vw, 23px)
-              white-space: nowrap
-          - type: state-label
-            entity: sensor.th_ext_temperature
-            title: "Température extérieure"
-            tap_action:
-              action: more-info
-            style:
-              left: "60.016%"
-              top: "81.314%"
-              color: "#d2f3ff"
-              font-weight: "600"
-              font-size: clamp(10px, 1.5vw, 23px)
-              white-space: nowrap
-          - type: state-label
-            entity: sensor.th_ch_parents_temperature
-            title: "Température chambre RDC"
-            tap_action:
-              action: more-info
-            style:
-              left: "11.526%"
-              top: "47.087%"
-              color: "#d2f3ff"
-              font-weight: "600"
-              font-size: clamp(10px, 1.5vw, 23px)
-              white-space: nowrap
-          - type: state-icon
-            entity: light.lampetele
-            title: "Luminaire salon 1 — mur droit, au-dessus de la baie"
-            icon: mdi:lightbulb
-            state_color: true
-            tap_action:
-              action: toggle
-            hold_action:
-              action: more-info
-            style:
-              left: "93.466%"
-              top: "36.752%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          - type: state-icon
-            entity: light.lampecanape
-            title: "Luminaire salon 2 — mur sous la porte-fenêtre cuisine"
-            icon: mdi:lightbulb
-            state_color: true
-            tap_action:
-              action: toggle
-            hold_action:
-              action: more-info
-            style:
-              left: "79.094%"
-              top: "33.21%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          - type: state-icon
-            entity: light.lampebuffet
-            title: "Luminaire salon 3 — mur bas, coin opposé à la cuisine"
-            icon: mdi:lightbulb
-            state_color: true
-            tap_action:
-              action: toggle
-            hold_action:
-              action: more-info
-            style:
-              left: "91.017%"
-              top: "69.288%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          - type: state-icon
-            entity: light.lampeflechettes
-            title: "Luminaire salon 4 — entre entrée et porte-fenêtre"
-            icon: mdi:lightbulb
-            state_color: true
-            tap_action:
-              action: toggle
-            hold_action:
-              action: more-info
-            style:
-              left: "67.17%"
-              top: "69.288%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          - type: state-icon
-            entity: vacuum.robot_aspirateur
-            title: "Aspirateur robot — près de la SDB et du dégagement"
-            icon: mdi:robot-vacuum
-            tap_action:
-              action: more-info
-            style:
-              left: "51.272%"
-              top: "55.874%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          - type: state-icon
-            entity: cover.volet_roulant_salon
-            title: "Volet salon — fenêtre est"
-            state_color: true
-            tap_action:
-              action: more-info
-            style:
-              left: "94.992%"
-              top: "53.1%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          - type: state-icon
-            entity: cover.volet_roulant_parents
-            title: "Volet chambre RDC"
-            state_color: true
-            tap_action:
-              action: more-info
-            style:
-              left: "4.769%"
-              top: "36.91%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          # Visiophone : clic = popup (browser_mod) avec Portail / Portillon
-          - type: state-icon
-            entity: camera.ezviz_hpd7_bk0229016_bk0227784_direct
-            title: "Visiophone — ouvrir le portail ou le portillon"
-            icon: mdi:doorbell-video
-            tap_action:
-              action: fire-dom-event
-              browser_mod:
-                service: browser_mod.popup
-                data:
-                  title: "Visiophone"
+      - type: custom:button-card
+        show_name: false
+        show_icon: false
+        show_state: false
+        show_label: false
+        styles:
+          card:
+            - width: "min(100%, calc((100vh - 140px) * 1.164))"
+            - aspect-ratio: "1258 / 1081"
+            - margin: "auto"
+            - padding: "0"
+            - min-height: "0"
+            - background: "transparent"
+            - box-shadow: "none"
+            - border: "none"
+            - overflow: "hidden"
+            - --ha-card-border-radius: "0"
+            - --ha-card-box-shadow: "none"
+          grid:
+            - grid-template-areas: '"plan"'
+            - grid-template-columns: "1fr"
+            - grid-template-rows: "1fr"
+            - grid-gap: "0"
+            - padding: "0"
+          custom_fields:
+            plan:
+              - width: "100%"
+              - height: "100%"
+              - padding: "0"
+        custom_fields:
+          plan:
+            card:
+              type: picture-elements
+              image: /local/plans/home-assistant-rdc.png
+              elements:
+                - type: state-label
+                  entity: sensor.th_salon_temperature
+                  title: "Température salon"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "81.479%"
+                    top: "49.399%"
+                    color: "#d2f3ff"
+                    font-weight: "600"
+                    font-size: clamp(10px, 1.5vw, 23px)
+                    white-space: nowrap
+                - type: state-label
+                  entity: sensor.th_garage_temperature
+                  title: "Température garage"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "27.424%"
+                    top: "83.626%"
+                    color: "#d2f3ff"
+                    font-weight: "600"
+                    font-size: clamp(10px, 1.5vw, 23px)
+                    white-space: nowrap
+                - type: state-label
+                  entity: sensor.th_ext_temperature
+                  title: "Température extérieure"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "60.016%"
+                    top: "81.314%"
+                    color: "#d2f3ff"
+                    font-weight: "600"
+                    font-size: clamp(10px, 1.5vw, 23px)
+                    white-space: nowrap
+                - type: state-label
+                  entity: sensor.th_ch_parents_temperature
+                  title: "Température chambre RDC"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "11.526%"
+                    top: "47.087%"
+                    color: "#d2f3ff"
+                    font-weight: "600"
+                    font-size: clamp(10px, 1.5vw, 23px)
+                    white-space: nowrap
+                - type: state-icon
+                  entity: light.lampetele
+                  title: "Luminaire salon 1 — mur droit, au-dessus de la baie"
+                  icon: mdi:lightbulb
+                  state_color: true
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+                  style:
+                    left: "93.466%"
+                    top: "36.752%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                - type: state-icon
+                  entity: light.lampecanape
+                  title: "Luminaire salon 2 — mur sous la porte-fenêtre cuisine"
+                  icon: mdi:lightbulb
+                  state_color: true
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+                  style:
+                    left: "79.094%"
+                    top: "33.21%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                - type: state-icon
+                  entity: light.lampebuffet
+                  title: "Luminaire salon 3 — mur bas, coin opposé à la cuisine"
+                  icon: mdi:lightbulb
+                  state_color: true
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+                  style:
+                    left: "91.017%"
+                    top: "69.288%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                - type: state-icon
+                  entity: light.lampeflechettes
+                  title: "Luminaire salon 4 — entre entrée et porte-fenêtre"
+                  icon: mdi:lightbulb
+                  state_color: true
+                  tap_action:
+                    action: toggle
+                  hold_action:
+                    action: more-info
+                  style:
+                    left: "67.17%"
+                    top: "69.288%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                - type: state-icon
+                  entity: vacuum.robot_aspirateur
+                  title: "Aspirateur robot — près de la SDB et du dégagement"
+                  icon: mdi:robot-vacuum
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "51.272%"
+                    top: "55.874%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                - type: state-icon
+                  entity: cover.volet_roulant_salon
+                  title: "Volet salon — fenêtre est"
+                  state_color: true
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "94.992%"
+                    top: "53.1%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                - type: state-icon
+                  entity: cover.volet_roulant_parents
+                  title: "Volet chambre RDC"
+                  state_color: true
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "4.769%"
+                    top: "36.91%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                # Visiophone : clic = popup (browser_mod) avec Portail / Portillon
+                - type: state-icon
+                  entity: camera.ezviz_hpd7_bk0229016_bk0227784_direct
+                  title: "Visiophone — ouvrir le portail ou le portillon"
                   icon: mdi:doorbell-video
-                  content:
-                    type: vertical-stack
-                    cards:
-                      - type: picture-entity
-                        show_state: false
-                        show_name: false
-                        camera_view: auto
-                        fit_mode: cover
-                        entity: camera.ezviz_hpd7_bk0229016_bk0227784_direct
-                        camera_image: camera.ezviz_hpd7_bk0229016_bk0227784_directhe
-                      - type: horizontal-stack
-                        cards:
-                          - type: button
-                            entity: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portail
-                            name: Portail
-                            icon: mdi:gate
-                            show_state: false
-                            tap_action:
-                              action: perform-action
-                              perform_action: button.press
-                              target:
-                                entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portail
-                              confirmation:
-                                text: "Ouvrir le portail ?"
-                          - type: button
-                            entity: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
-                            name: Portillon
-                            icon: mdi:door
-                            show_state: false
-                            tap_action:
-                              action: perform-action
-                              perform_action: button.press
-                              target:
-                                entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
-                              confirmation:
-                                text: "Ouvrir le portillon ?"
-            hold_action:
-              action: more-info
-            style:
-              left: "57.536%"
-              top: "64.57%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          # Bloc météo : se pose dans le cadre "MÉTÉO DU JOUR" du plan
-          - type: custom:meteofrance-weather-card
-            entity: weather.mionnay
-            current: false
-            details: false
-            alert_forecast: false
-            one_hour_forecast: false
-            hourly_forecast: true
-            number_of_hourly_forecasts: "4"
-            daily_forecast: false
-            hourly_details: false
-            animated_icons: true
-            cloudCoverEntity: sensor.mionnay_cloud_cover
-            rainChanceEntity: sensor.mionnay_rain_chance
-            freezeChanceEntity: sensor.mionnay_freeze_chance
-            snowChanceEntity: sensor.mionnay_snow_chance
-            uvEntity: sensor.mionnay_uv
-            rainForecastEntity: sensor.mionnay_next_rain
-            alertEntity: sensor.01_weather_alert
-            style:
-              left: "83.148%"
-              top: "89.5%"
-              width: "31.081%"
-              --ha-card-background: transparent
-              --ha-card-box-shadow: none
-              --primary-text-color: "#d2f3ff"
-              --secondary-text-color: "#83b1c9"
+                  tap_action:
+                    action: fire-dom-event
+                    browser_mod:
+                      service: browser_mod.popup
+                      data:
+                        title: "Visiophone"
+                        icon: mdi:doorbell-video
+                        content:
+                          type: vertical-stack
+                          cards:
+                            - type: picture-entity
+                              show_state: false
+                              show_name: false
+                              camera_view: auto
+                              fit_mode: cover
+                              entity: camera.ezviz_hpd7_bk0229016_bk0227784_direct
+                              camera_image: camera.ezviz_hpd7_bk0229016_bk0227784_directhe
+                            - type: horizontal-stack
+                              cards:
+                                - type: button
+                                  entity: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portail
+                                  name: Portail
+                                  icon: mdi:gate
+                                  show_state: false
+                                  tap_action:
+                                    action: perform-action
+                                    perform_action: button.press
+                                    target:
+                                      entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portail
+                                    confirmation:
+                                      text: "Ouvrir le portail ?"
+                                - type: button
+                                  entity: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
+                                  name: Portillon
+                                  icon: mdi:door
+                                  show_state: false
+                                  tap_action:
+                                    action: perform-action
+                                    perform_action: button.press
+                                    target:
+                                      entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
+                                    confirmation:
+                                      text: "Ouvrir le portillon ?"
+                  hold_action:
+                    action: more-info
+                  style:
+                    left: "57.536%"
+                    top: "64.57%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                # Bloc météo : se pose dans le cadre "MÉTÉO DU JOUR" du plan
+                - type: custom:meteofrance-weather-card
+                  entity: weather.mionnay
+                  current: false
+                  details: false
+                  alert_forecast: false
+                  one_hour_forecast: false
+                  hourly_forecast: true
+                  number_of_hourly_forecasts: "4"
+                  daily_forecast: false
+                  hourly_details: false
+                  animated_icons: true
+                  cloudCoverEntity: sensor.mionnay_cloud_cover
+                  rainChanceEntity: sensor.mionnay_rain_chance
+                  freezeChanceEntity: sensor.mionnay_freeze_chance
+                  snowChanceEntity: sensor.mionnay_snow_chance
+                  uvEntity: sensor.mionnay_uv
+                  rainForecastEntity: sensor.mionnay_next_rain
+                  alertEntity: sensor.01_weather_alert
+                  style:
+                    left: "83.148%"
+                    top: "89.5%"
+                    width: "31.081%"
+                    --ha-card-background: transparent
+                    --ha-card-box-shadow: none
+                    --primary-text-color: "#d2f3ff"
+                    --secondary-text-color: "#83b1c9"
   - title: Étage
     path: etage
     type: panel
     cards:
-      - type: picture-elements
-        image: /local/plans/home-assistant-etage.png
-        elements:
-          - type: state-label
-            entity: sensor.th_bureau_temperature
-            title: "Température chambre 1"
-            tap_action:
-              action: more-info
-            style:
-              left: "20.675%"
-              top: "18.556%"
-              color: "#d2f3ff"
-              font-weight: "600"
-              font-size: clamp(10px, 1.5vw, 23px)
-              white-space: nowrap
-          - type: state-label
-            entity: sensor.th_ch_romain_temperature
-            title: "Température chambre 2"
-            tap_action:
-              action: more-info
-            style:
-              left: "15.191%"
-              top: "54.64%"
-              color: "#d2f3ff"
-              font-weight: "600"
-              font-size: clamp(10px, 1.5vw, 23px)
-              white-space: nowrap
-          - type: state-label
-            entity: sensor.th_ch_gaetan_temperature
-            title: "Température chambre 3"
-            tap_action:
-              action: more-info
-            style:
-              left: "63.932%"
-              top: "85.567%"
-              color: "#d2f3ff"
-              font-weight: "600"
-              font-size: clamp(10px, 1.5vw, 23px)
-              white-space: nowrap
-          - type: state-label
-            entity: sensor.th_salle_jeux_temperature
-            title: "Température salle de jeux"
-            tap_action:
-              action: more-info
-            style:
-              left: "63.932%"
-              top: "41.752%"
-              color: "#d2f3ff"
-              font-weight: "600"
-              font-size: clamp(10px, 1.5vw, 23px)
-              white-space: nowrap
-          - type: state-icon
-            entity: cover.volet_roulant_bureau
-            title: "Volet chambre 1"
-            state_color: true
-            tap_action:
-              action: more-info
-            style:
-              left: "7.27%"
-              top: "17.268%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          - type: state-icon
-            entity: cover.volet_roulant_romain
-            title: "Volet chambre 2"
-            state_color: true
-            tap_action:
-              action: more-info
-            style:
-              left: "7.27%"
-              top: "41.752%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          - type: state-icon
-            entity: cover.volet_roulant_gaetan
-            title: "Volet chambre 3"
-            state_color: true
-            tap_action:
-              action: more-info
-            style:
-              left: "77.335%"
-              top: "80.412%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
-          - type: state-icon
-            entity: cover.volet_roulant_salle_jeux
-            title: "Volet salle de jeux"
-            state_color: true
-            tap_action:
-              action: more-info
-            style:
-              left: "77.335%"
-              top: "17.913%"
-              color: "#83b1c9"
-              --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+      - type: custom:button-card
+        show_name: false
+        show_icon: false
+        show_state: false
+        show_label: false
+        styles:
+          card:
+            - width: "min(100%, calc((100vh - 140px) * 1.058))"
+            - aspect-ratio: "1231 / 1164"
+            - margin: "auto"
+            - padding: "0"
+            - min-height: "0"
+            - background: "transparent"
+            - box-shadow: "none"
+            - border: "none"
+            - overflow: "hidden"
+            - --ha-card-border-radius: "0"
+            - --ha-card-box-shadow: "none"
+          grid:
+            - grid-template-areas: '"plan"'
+            - grid-template-columns: "1fr"
+            - grid-template-rows: "1fr"
+            - grid-gap: "0"
+            - padding: "0"
+          custom_fields:
+            plan:
+              - width: "100%"
+              - height: "100%"
+              - padding: "0"
+        custom_fields:
+          plan:
+            card:
+              type: picture-elements
+              image: /local/plans/home-assistant-etage.png
+              elements:
+                - type: state-label
+                  entity: sensor.th_bureau_temperature
+                  title: "Température chambre 1"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "20.675%"
+                    top: "18.556%"
+                    color: "#d2f3ff"
+                    font-weight: "600"
+                    font-size: clamp(10px, 1.5vw, 23px)
+                    white-space: nowrap
+                - type: state-label
+                  entity: sensor.th_ch_romain_temperature
+                  title: "Température chambre 2"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "15.191%"
+                    top: "54.64%"
+                    color: "#d2f3ff"
+                    font-weight: "600"
+                    font-size: clamp(10px, 1.5vw, 23px)
+                    white-space: nowrap
+                - type: state-label
+                  entity: sensor.th_ch_gaetan_temperature
+                  title: "Température chambre 3"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "63.932%"
+                    top: "85.567%"
+                    color: "#d2f3ff"
+                    font-weight: "600"
+                    font-size: clamp(10px, 1.5vw, 23px)
+                    white-space: nowrap
+                - type: state-label
+                  entity: sensor.th_salle_jeux_temperature
+                  title: "Température salle de jeux"
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "63.932%"
+                    top: "41.752%"
+                    color: "#d2f3ff"
+                    font-weight: "600"
+                    font-size: clamp(10px, 1.5vw, 23px)
+                    white-space: nowrap
+                - type: state-icon
+                  entity: cover.volet_roulant_bureau
+                  title: "Volet chambre 1"
+                  state_color: true
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "7.27%"
+                    top: "17.268%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                - type: state-icon
+                  entity: cover.volet_roulant_romain
+                  title: "Volet chambre 2"
+                  state_color: true
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "7.27%"
+                    top: "41.752%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                - type: state-icon
+                  entity: cover.volet_roulant_gaetan
+                  title: "Volet chambre 3"
+                  state_color: true
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "77.335%"
+                    top: "80.412%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
+                - type: state-icon
+                  entity: cover.volet_roulant_salle_jeux
+                  title: "Volet salle de jeux"
+                  state_color: true
+                  tap_action:
+                    action: more-info
+                  style:
+                    left: "77.335%"
+                    top: "17.913%"
+                    color: "#83b1c9"
+                    --mdc-icon-size: clamp(18px, 2.2vw, 32px)
