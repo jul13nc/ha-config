@@ -119,14 +119,43 @@ template:
 
           {{ start is not none and end is not none and start <= aujourdhui <= end }}
   - binary_sensor:
+      - name: ferie_aujourdhui
+        unique_id: binary_sensor.ferie_aujourdhui
+        icon: mdi:calendar-star
+        state: >-
+          {{ states('sensor.jour_ferie_aujourdhui') not in ['Aucun', 'unknown', 'unavailable'] }}
+  - binary_sensor:
+      - name: ferie_demain
+        unique_id: binary_sensor.ferie_demain
+        icon: mdi:calendar-star
+        state: >-
+          {{ states('sensor.jour_ferie_demain') not in ['Aucun', 'unknown', 'unavailable'] }}
+  - binary_sensor:
       - name: jourTravail
         unique_id: binary_sensor.jour_travail_aujourdhui
         icon: mdi:calendar-today
-        state: |-
-          {{ is_state('binary_sensor.vacances_scolaires_aujourdhui','off')
-          and
-          is_state('binary_sensor.ouvrableaujourdhui','on')
-          }}
+        state: >-
+          {{ now().weekday() < 5
+             and is_state('binary_sensor.ferie_aujourdhui', 'off')
+             and is_state('binary_sensor.vacances_scolaires_aujourdhui', 'off') }}
+  - binary_sensor:
+      - name: vacances_scolaires_demain
+        unique_id: binary_sensor.vacances_scolaires_demain
+        icon: mdi:calendar-arrow-right
+        state: >-
+          {% set demain = (now() + timedelta(days=1)).strftime('%Y-%m-%d') %}
+          {% set start = state_attr('sensor.vacances_scolaires', 'start_date') %}
+          {% set end = state_attr('sensor.vacances_scolaires', 'end_date') %}
+
+          {{ start is not none and end is not none and start <= demain <= end }}
+  - binary_sensor:
+      - name: jourTravailDemain
+        unique_id: binary_sensor.jour_travail_demain
+        icon: mdi:calendar-arrow-right
+        state: >-
+          {{ (now() + timedelta(days=1)).weekday() < 5
+             and is_state('binary_sensor.ferie_demain', 'off')
+             and is_state('binary_sensor.vacances_scolaires_demain', 'off') }}
   - sensor:
       - name: "Volume de Gaz"
         unique_id: sensor.gaz_volume

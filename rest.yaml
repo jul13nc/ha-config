@@ -29,3 +29,19 @@
       {%- if record.end_date > aujourdhui and record.description %} prochaines : {{record.description}} {{ as_timestamp(record.start_date) | timestamp_custom('%d-%m-%Y') }}{% endif %}
       {% endif %}
       {%- endfor %}
+
+- resource: https://calendrier.api.gouv.fr/jours-feries/metropole.json
+  scan_interval: 900
+  sensor:
+    - name: jour_ferie_aujourdhui
+      unique_id: sensor.jour_ferie_aujourdhui
+      icon: mdi:calendar-star
+      value_template: >-
+        {% set jour = now().strftime('%Y-%m-%d') %}
+        {{ value_json.get(jour, 'Aucun') }}
+    - name: jour_ferie_demain
+      unique_id: sensor.jour_ferie_demain
+      icon: mdi:calendar-star
+      value_template: >-
+        {% set demain = (now() + timedelta(days=1)).strftime('%Y-%m-%d') %}
+        {{ value_json.get(demain, 'Aucun') }}

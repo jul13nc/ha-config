@@ -7,8 +7,8 @@
       at: "21:00:00"
   condition:
     - condition: state
-      entity_id: binary_sensor.ouvrabledemain
-      state: "off"
+      entity_id: binary_sensor.ferie_demain
+      state: "on"
     - condition: time
       weekday:
         - sun
