@@ -126,6 +126,9 @@
     switch.priselampesalon:
       friendly_name: PriseLampeSalon
       state: 'off'
+    fan.salon_ventilosalon:
+      friendly_name: Ventilateur
+      state: 'off'
     select.priselampesalon_indicator_mode:
       options:
       - 'off'

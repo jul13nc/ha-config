@@ -63,6 +63,47 @@ views:
                 - type: custom:mushroom-light-card
                   entity: light.lampebuffet
                   name: Buffet
+                - type: horizontal-stack
+                  cards:
+                    - type: button
+                      name: 'Off'
+                      icon: mdi:fan-off
+                      tap_action:
+                        action: perform-action
+                        perform_action: fan.turn_off
+                        target:
+                          entity_id: fan.salon_ventilosalon
+                    - type: button
+                      name: '1'
+                      icon: mdi:fan-speed-1
+                      tap_action:
+                        action: perform-action
+                        perform_action: fan.set_percentage
+                        target:
+                          entity_id: fan.salon_ventilosalon
+                        data:
+                          percentage: 20
+                    - type: button
+                      name: '2'
+                      icon: mdi:fan-speed-2
+                      tap_action:
+                        action: perform-action
+                        perform_action: fan.set_percentage
+                        target:
+                          entity_id: fan.salon_ventilosalon
+                        data:
+                          percentage: 40
+                    - type: button
+                      name: '3'
+                      icon: mdi:fan-speed-3
+                      tap_action:
+                        action: perform-action
+                        perform_action: fan.set_percentage
+                        target:
+                          entity_id: fan.salon_ventilosalon
+                        data:
+                          percentage: 60
+
         - type: horizontal-stack
           cards:
             - type: vertical-stack
