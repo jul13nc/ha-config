@@ -1,6 +1,11 @@
 views:
   - title: Home
     cards:
+      - type: markdown
+        title: Événements du jour
+        content: >-
+          {{ state_attr('sensor.evenements_du_jour', 'agenda')
+             or '_Aucun événement aujourd’hui._' }}
       - type: vertical-stack
         cards:
         - type: horizontal-stack

@@ -170,6 +170,52 @@ template:
         state: "{{ states('input_number.water_counter') | int / 1000 | round(3) }}"
         device_class: water
         state_class: total_increasing
+  - triggers:
+      - trigger: homeassistant
+        event: start
+      - trigger: time_pattern
+        minutes: "/5"
+      - trigger: state
+        entity_id:
+          - calendar.famille
+          - calendar.julien
+          - calendar.virginie
+    actions:
+      - action: calendar.get_events
+        target:
+          entity_id:
+            - calendar.famille
+            - calendar.julien
+            - calendar.virginie
+        data:
+          start_date_time: "{{ now().replace(hour=0, minute=0, second=0, microsecond=0).isoformat() }}"
+          end_date_time: "{{ (now().replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)).isoformat() }}"
+        response_variable: agendas
+    sensor:
+      - name: "Événements du jour"
+        unique_id: evenements_du_jour
+        icon: mdi:calendar-today
+        state: "{{ agendas.values() | map(attribute='events') | map('count') | sum }}"
+        attributes:
+          agenda: >-
+            {%- set ns = namespace(events=[]) -%}
+            {%- for entity_id, agenda in agendas.items() -%}
+            {%- set calendar_name = state_attr(entity_id, 'friendly_name') or entity_id.split('.')[1] | replace('_', ' ') | title -%}
+            {%- for event in agenda.events -%}
+            {%- set start = event.start -%}
+            {%- set location = ' (' ~ event.location ~ ')' if event.location else '' -%}
+            {%- set time = 'Journée' if start | length == 10 else as_timestamp(start) | timestamp_custom('%H:%M') -%}
+            {%- set ns.events = ns.events + [{
+              'start': as_timestamp(start),
+              'line': '- **' ~ time ~ '** — ' ~ event.summary ~ location ~ ' · *' ~ calendar_name ~ '*'
+            }] -%}
+            {%- endfor -%}
+            {%- endfor -%}
+            {%- if ns.events -%}
+            {{ ns.events | sort(attribute='start') | map(attribute='line') | join('\n') }}
+            {%- else -%}
+            Aucun événement aujourd'hui.
+            {%- endif -%}
 
 
 input_number:
