@@ -1,4 +1,5 @@
 title: Maison · Quotidien
+button_card_templates: !include propositions/mesures-templates.yaml
 views:
   - title: Maison
     path: accueil

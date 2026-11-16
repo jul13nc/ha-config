@@ -1,4 +1,5 @@
 title: Maison · Pilotage
+button_card_templates: !include propositions/mesures-templates.yaml
 views:
   - title: Volets
     path: volets

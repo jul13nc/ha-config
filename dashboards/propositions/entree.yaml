@@ -27,15 +27,20 @@ cards:
         entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
       confirmation:
         text: Ouvrir le portillon ?
-  - type: glance
-    show_name: false
-    columns: 2
-    entities:
-      - entity: sensor.th_ext_temperature
+  - type: horizontal-stack
+    grid_options:
+      columns: 12
+      rows: 1
+    cards:
+      - type: custom:button-card
+        template: mesure_compacte
+        entity: sensor.th_ext_temperature
         icon: mdi:thermometer
         tap_action:
           action: more-info
-      - entity: sensor.th_ext_humidity
+      - type: custom:button-card
+        template: mesure_compacte
+        entity: sensor.th_ext_humidity
         icon: mdi:water-percent
         tap_action:
           action: more-info

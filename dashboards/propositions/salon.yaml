@@ -4,15 +4,20 @@ cards:
   - type: heading
     heading: Salon
     icon: mdi:sofa
-  - type: glance
-    show_name: false
-    columns: 2
-    entities:
-      - entity: sensor.th_salon_temperature
+  - type: horizontal-stack
+    grid_options:
+      columns: 12
+      rows: 1
+    cards:
+      - type: custom:button-card
+        template: mesure_compacte
+        entity: sensor.th_salon_temperature
         icon: mdi:thermometer
         tap_action:
           action: more-info
-      - entity: sensor.th_salon_humidity
+      - type: custom:button-card
+        template: mesure_compacte
+        entity: sensor.th_salon_humidity
         icon: mdi:water-percent
         tap_action:
           action: more-info

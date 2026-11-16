@@ -1,4 +1,5 @@
 title: Maison · Pièces
+button_card_templates: !include propositions/mesures-templates.yaml
 views:
   - title: Maison
     path: rdc
@@ -57,15 +58,20 @@ views:
           - type: heading
             heading: Chambre parents
             icon: mdi:bed-double-outline
-          - type: glance
-            show_name: false
-            columns: 2
-            entities:
-              - entity: sensor.th_ch_parents_temperature
+          - type: horizontal-stack
+            grid_options:
+              columns: 12
+              rows: 1
+            cards:
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_ch_parents_temperature
                 icon: mdi:thermometer
                 tap_action:
                   action: more-info
-              - entity: sensor.th_ch_parents_humidity
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_ch_parents_humidity
                 icon: mdi:water-percent
                 tap_action:
                   action: more-info
@@ -83,15 +89,20 @@ views:
           - type: heading
             heading: Garage et entretien
             icon: mdi:garage
-          - type: glance
-            show_name: false
-            columns: 2
-            entities:
-              - entity: sensor.th_garage_temperature
+          - type: horizontal-stack
+            grid_options:
+              columns: 12
+              rows: 1
+            cards:
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_garage_temperature
                 icon: mdi:thermometer
                 tap_action:
                   action: more-info
-              - entity: sensor.th_garage_humidity
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_garage_humidity
                 icon: mdi:water-percent
                 tap_action:
                   action: more-info
@@ -118,15 +129,20 @@ views:
           - type: heading
             heading: Gaetan
             icon: mdi:bed-outline
-          - type: glance
-            show_name: false
-            columns: 2
-            entities:
-              - entity: sensor.th_ch_gaetan_temperature
+          - type: horizontal-stack
+            grid_options:
+              columns: 12
+              rows: 1
+            cards:
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_ch_gaetan_temperature
                 icon: mdi:thermometer
                 tap_action:
                   action: more-info
-              - entity: sensor.th_ch_gaetan_humidity
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_ch_gaetan_humidity
                 icon: mdi:water-percent
                 tap_action:
                   action: more-info
@@ -143,15 +159,20 @@ views:
           - type: heading
             heading: Romain
             icon: mdi:bed-outline
-          - type: glance
-            show_name: false
-            columns: 2
-            entities:
-              - entity: sensor.th_ch_romain_temperature
+          - type: horizontal-stack
+            grid_options:
+              columns: 12
+              rows: 1
+            cards:
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_ch_romain_temperature
                 icon: mdi:thermometer
                 tap_action:
                   action: more-info
-              - entity: sensor.th_ch_romain_humidity
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_ch_romain_humidity
                 icon: mdi:water-percent
                 tap_action:
                   action: more-info
@@ -168,15 +189,20 @@ views:
           - type: heading
             heading: Bureau
             icon: mdi:desk
-          - type: glance
-            show_name: false
-            columns: 2
-            entities:
-              - entity: sensor.th_bureau_temperature
+          - type: horizontal-stack
+            grid_options:
+              columns: 12
+              rows: 1
+            cards:
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_bureau_temperature
                 icon: mdi:thermometer
                 tap_action:
                   action: more-info
-              - entity: sensor.th_bureau_humidity
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_bureau_humidity
                 icon: mdi:water-percent
                 tap_action:
                   action: more-info
@@ -193,15 +219,20 @@ views:
           - type: heading
             heading: Salle de jeux
             icon: mdi:toy-brick-outline
-          - type: glance
-            show_name: false
-            columns: 2
-            entities:
-              - entity: sensor.th_salle_jeux_temperature
+          - type: horizontal-stack
+            grid_options:
+              columns: 12
+              rows: 1
+            cards:
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_salle_jeux_temperature
                 icon: mdi:thermometer
                 tap_action:
                   action: more-info
-              - entity: sensor.th_salle_jeux_humidity
+              - type: custom:button-card
+                template: mesure_compacte
+                entity: sensor.th_salle_jeux_humidity
                 icon: mdi:water-percent
                 tap_action:
                   action: more-info

@@ -1,6 +1,6 @@
 # Trois propositions de dashboard
 
-Les dashboards utilisent des cartes natives Home Assistant et des sections
+Les dashboards utilisent des cartes Home Assistant et des sections
 adaptatives : côte à côte sur grand écran, empilées sur smartphone.
 
 | Proposition | Adresse | Organisation |
@@ -18,6 +18,9 @@ adaptatives : côte à côte sur grand écran, empilées sur smartphone.
   thermomètre pour la température, pourcentage d’eau pour l’humidité. Toucher une
   mesure ouvre ses détails. Les noms des pièces restent visibles sur l’accueil
   et dans le suivi pour situer les mesures.
+- Sur la page Pièces, les mesures utilisent `custom:button-card`, déjà présent
+  dans le dashboard global : valeurs de 24 px, icônes de 22 px, deux mesures sur
+  une seule ligne de 44 px. Le style est partagé dans `mesures-templates.yaml`.
 - **Tout ouvrir / Tout fermer** est accessible dans la première section du
   premier écran des trois variantes. Chaque bouton cible les six volets.
 - Les commandes des volets ne changent pas leur mode. Le mode Manuel suspend
