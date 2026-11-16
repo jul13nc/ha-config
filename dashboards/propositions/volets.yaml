@@ -3,6 +3,8 @@
     - type: heading
       heading: Commandes groupées
       icon: mdi:window-shutter-cog
+    - !include tout-ouvrir.yaml
+    - !include tout-fermer.yaml
     - type: tile
       entity: input_select.modevolets
       name: Mode des volets
@@ -17,34 +19,6 @@
         Les commandes manuelles ne changent pas le mode sélectionné.
         Choisir **Manuel** pour suspendre la gestion automatique liée au mode.
         La fermeture indépendante au lever du jour reste active.
-    - type: button
-      name: Tout ouvrir
-      icon: mdi:window-shutter-open
-      tap_action:
-        action: perform-action
-        perform_action: cover.open_cover
-        target:
-          entity_id:
-            - cover.volet_roulant_salon
-            - cover.volet_roulant_parents
-            - cover.volet_roulant_gaetan
-            - cover.volet_roulant_romain
-            - cover.volet_roulant_bureau
-            - cover.volet_roulant_salle_jeux
-    - type: button
-      name: Tout fermer
-      icon: mdi:window-shutter
-      tap_action:
-        action: perform-action
-        perform_action: cover.close_cover
-        target:
-          entity_id:
-            - cover.volet_roulant_salon
-            - cover.volet_roulant_parents
-            - cover.volet_roulant_gaetan
-            - cover.volet_roulant_romain
-            - cover.volet_roulant_bureau
-            - cover.volet_roulant_salle_jeux
     - type: button
       name: Tout arrêter
       icon: mdi:stop-circle-outline
@@ -109,7 +83,7 @@
       icon: mdi:home-floor-1
     - type: tile
       entity: cover.volet_roulant_gaetan
-      name: Gaëtan
+      name: Gaetan
       grid_options:
         columns: 12
         rows: auto

@@ -1,17 +1,23 @@
 - type: grid
   cards:
     - type: heading
-      heading: Gaëtan
+      heading: Gaetan
       icon: mdi:bed-outline
-    - type: tile
-      entity: sensor.th_ch_gaetan_temperature
-      name: Température
-    - type: tile
-      entity: sensor.th_ch_gaetan_humidity
-      name: Humidité
+    - type: glance
+      show_name: false
+      columns: 2
+      entities:
+        - entity: sensor.th_ch_gaetan_temperature
+          icon: mdi:thermometer
+          tap_action:
+            action: more-info
+        - entity: sensor.th_ch_gaetan_humidity
+          icon: mdi:water-percent
+          tap_action:
+            action: more-info
     - type: tile
       entity: cover.volet_roulant_gaetan
-      name: Volet Gaëtan
+      name: Volet Gaetan
       grid_options:
         columns: 12
         rows: auto
@@ -22,12 +28,18 @@
     - type: heading
       heading: Romain
       icon: mdi:bed-outline
-    - type: tile
-      entity: sensor.th_ch_romain_temperature
-      name: Température
-    - type: tile
-      entity: sensor.th_ch_romain_humidity
-      name: Humidité
+    - type: glance
+      show_name: false
+      columns: 2
+      entities:
+        - entity: sensor.th_ch_romain_temperature
+          icon: mdi:thermometer
+          tap_action:
+            action: more-info
+        - entity: sensor.th_ch_romain_humidity
+          icon: mdi:water-percent
+          tap_action:
+            action: more-info
     - type: tile
       entity: cover.volet_roulant_romain
       name: Volet Romain
@@ -41,12 +53,18 @@
     - type: heading
       heading: Bureau
       icon: mdi:desk
-    - type: tile
-      entity: sensor.th_bureau_temperature
-      name: Température
-    - type: tile
-      entity: sensor.th_bureau_humidity
-      name: Humidité
+    - type: glance
+      show_name: false
+      columns: 2
+      entities:
+        - entity: sensor.th_bureau_temperature
+          icon: mdi:thermometer
+          tap_action:
+            action: more-info
+        - entity: sensor.th_bureau_humidity
+          icon: mdi:water-percent
+          tap_action:
+            action: more-info
     - type: tile
       entity: cover.volet_roulant_bureau
       name: Volet bureau
@@ -60,12 +78,18 @@
     - type: heading
       heading: Salle de jeux
       icon: mdi:toy-brick-outline
-    - type: tile
-      entity: sensor.th_salle_jeux_temperature
-      name: Température
-    - type: tile
-      entity: sensor.th_salle_jeux_humidity
-      name: Humidité
+    - type: glance
+      show_name: false
+      columns: 2
+      entities:
+        - entity: sensor.th_salle_jeux_temperature
+          icon: mdi:thermometer
+          tap_action:
+            action: more-info
+        - entity: sensor.th_salle_jeux_humidity
+          icon: mdi:water-percent
+          tap_action:
+            action: more-info
     - type: tile
       entity: cover.volet_roulant_salle_jeux
       name: Volet salle de jeux

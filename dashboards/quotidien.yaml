@@ -30,6 +30,8 @@ views:
               {% set missing = expand(lights + covers + people)
                 | selectattr('state', 'in', ['unknown', 'unavailable']) | list | count %}
               {% if missing %}⚠️ {{ missing }} équipement(s) ou présence(s) sans état fiable.{% endif %}
+          - !include propositions/tout-ouvrir.yaml
+          - !include propositions/tout-fermer.yaml
           - type: tile
             entity: sensor.th_salon_temperature
             name: Salon
@@ -146,7 +148,7 @@ views:
             name: Virginie
           - type: tile
             entity: person.gaetan
-            name: Gaëtan
+            name: Gaetan
           - type: tile
             entity: person.romain
             name: Romain

@@ -1,0 +1,14 @@
+type: button
+name: Tout ouvrir
+icon: mdi:window-shutter-open
+tap_action:
+  action: perform-action
+  perform_action: cover.open_cover
+  target:
+    entity_id:
+      - cover.volet_roulant_salon
+      - cover.volet_roulant_parents
+      - cover.volet_roulant_gaetan
+      - cover.volet_roulant_romain
+      - cover.volet_roulant_bureau
+      - cover.volet_roulant_salle_jeux

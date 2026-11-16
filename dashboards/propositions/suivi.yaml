@@ -4,7 +4,6 @@
       heading: Confort dans les pièces
       icon: mdi:home-thermometer-outline
     - type: entities
-      title: Températures
       show_header_toggle: false
       entities:
         - entity: sensor.th_salon_temperature
@@ -12,7 +11,7 @@
         - entity: sensor.th_ch_parents_temperature
           name: Parents
         - entity: sensor.th_ch_gaetan_temperature
-          name: Gaëtan
+          name: Gaetan
         - entity: sensor.th_ch_romain_temperature
           name: Romain
         - entity: sensor.th_bureau_temperature
@@ -24,7 +23,6 @@
         - entity: sensor.th_ext_temperature
           name: Extérieur
     - type: entities
-      title: Humidité
       show_header_toggle: false
       entities:
         - entity: sensor.th_salon_humidity
@@ -32,7 +30,7 @@
         - entity: sensor.th_ch_parents_humidity
           name: Parents
         - entity: sensor.th_ch_gaetan_humidity
-          name: Gaëtan
+          name: Gaetan
         - entity: sensor.th_ch_romain_humidity
           name: Romain
         - entity: sensor.th_bureau_humidity
@@ -93,7 +91,7 @@
       name: Virginie
     - type: tile
       entity: person.gaetan
-      name: Gaëtan
+      name: Gaetan
     - type: tile
       entity: person.romain
       name: Romain
