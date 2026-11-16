@@ -9,8 +9,8 @@
 - name: Gaetan
   id: gaetan
   device_trackers:
-    - device_tracker.galaxy_a13
+    - device_tracker.moto_g55_5g
 - name: Romain
   id: romain
   device_trackers:
-    - device_tracker.galaxys5mini
+    - device_tracker.moto_g34_5g_2
