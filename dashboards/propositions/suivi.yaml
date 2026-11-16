@@ -1,0 +1,110 @@
+- type: grid
+  cards:
+    - type: heading
+      heading: Confort dans les pièces
+      icon: mdi:home-thermometer-outline
+    - type: entities
+      title: Températures
+      show_header_toggle: false
+      entities:
+        - entity: sensor.th_salon_temperature
+          name: Salon
+        - entity: sensor.th_ch_parents_temperature
+          name: Parents
+        - entity: sensor.th_ch_gaetan_temperature
+          name: Gaëtan
+        - entity: sensor.th_ch_romain_temperature
+          name: Romain
+        - entity: sensor.th_bureau_temperature
+          name: Bureau
+        - entity: sensor.th_salle_jeux_temperature
+          name: Salle de jeux
+        - entity: sensor.th_garage_temperature
+          name: Garage
+        - entity: sensor.th_ext_temperature
+          name: Extérieur
+    - type: entities
+      title: Humidité
+      show_header_toggle: false
+      entities:
+        - entity: sensor.th_salon_humidity
+          name: Salon
+        - entity: sensor.th_ch_parents_humidity
+          name: Parents
+        - entity: sensor.th_ch_gaetan_humidity
+          name: Gaëtan
+        - entity: sensor.th_ch_romain_humidity
+          name: Romain
+        - entity: sensor.th_bureau_humidity
+          name: Bureau
+        - entity: sensor.th_salle_jeux_humidity
+          name: Salle de jeux
+        - entity: sensor.th_garage_humidity
+          name: Garage
+        - entity: sensor.th_ext_humidity
+          name: Extérieur
+    - type: history-graph
+      title: Salon et extérieur · 24 h
+      hours_to_show: 24
+      entities:
+        - entity: sensor.th_salon_temperature
+          name: Salon
+        - entity: sensor.th_ext_temperature
+          name: Extérieur
+- type: grid
+  cards:
+    - type: heading
+      heading: Eau et gaz
+      icon: mdi:meter-gas-outline
+    - type: tile
+      entity: sensor.water_total_usage_daily
+      name: Eau aujourd’hui
+    - type: tile
+      entity: sensor.gaz_total_usage_daily
+      name: Gaz aujourd’hui
+    - type: tile
+      entity: sensor.water_total_usage_monthly
+      name: Eau ce mois
+    - type: tile
+      entity: sensor.gaz_total_usage_monthly
+      name: Gaz ce mois
+    - type: history-graph
+      title: Eau · 7 jours (compteur quotidien)
+      hours_to_show: 168
+      entities:
+        - entity: sensor.water_total_usage_daily
+          name: Eau
+    - type: history-graph
+      title: Gaz · 7 jours (compteur quotidien)
+      hours_to_show: 168
+      entities:
+        - entity: sensor.gaz_total_usage_daily
+          name: Gaz
+- type: grid
+  cards:
+    - type: heading
+      heading: Famille et agenda
+      icon: mdi:account-group
+    - type: tile
+      entity: person.julien
+      name: Julien
+    - type: tile
+      entity: person.virginie
+      name: Virginie
+    - type: tile
+      entity: person.gaetan
+      name: Gaëtan
+    - type: tile
+      entity: person.romain
+      name: Romain
+    - type: markdown
+      title: Aujourd’hui
+      content: >-
+        {{ state_attr('sensor.evenements_du_jour', 'agenda')
+          or '_Agenda indisponible._' }}
+    - type: calendar
+      initial_view: listWeek
+      entities:
+        - calendar.famille
+        - calendar.julien
+        - calendar.virginie

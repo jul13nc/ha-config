@@ -1,0 +1,69 @@
+title: Maison · Pièces
+views:
+  - title: RDC
+    path: rdc
+    icon: mdi:home-floor-0
+    type: sections
+    max_columns: 3
+    sections:
+      - !include propositions/salon.yaml
+      - type: grid
+        cards:
+          - type: heading
+            heading: Chambre parents
+            icon: mdi:bed-double-outline
+          - type: tile
+            entity: sensor.th_ch_parents_temperature
+            name: Température
+          - type: tile
+            entity: sensor.th_ch_parents_humidity
+            name: Humidité
+          - type: tile
+            entity: cover.volet_roulant_parents
+            name: Volet parents
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: cover-open-close
+              - type: cover-position
+          - type: heading
+            heading: Garage et entretien
+            icon: mdi:garage
+          - type: tile
+            entity: sensor.th_garage_temperature
+            name: Température
+          - type: tile
+            entity: sensor.th_garage_humidity
+            name: Humidité
+          - type: tile
+            entity: binary_sensor.washing_machine
+            name: Lave-linge
+          - type: tile
+            entity: sensor.prisemal_power
+            name: Puissance lave-linge
+          - type: tile
+            entity: vacuum.robot_aspirateur
+            name: Aspirateur
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: vacuum-commands
+                commands:
+                  - start_pause
+                  - stop
+                  - return_home
+      - !include propositions/entree.yaml
+  - title: Étage
+    path: etage
+    icon: mdi:home-floor-1
+    type: sections
+    max_columns: 2
+    sections: !include propositions/etage.yaml
+  - title: Suivi
+    path: suivi
+    icon: mdi:chart-line
+    type: sections
+    max_columns: 3
+    sections: !include propositions/suivi.yaml

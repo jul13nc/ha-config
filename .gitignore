@@ -6,6 +6,7 @@
 !.gitignore
 !*.md
 !dashboards/
+!dashboards/propositions/
 !automations/
 !blueprints/
 !www/

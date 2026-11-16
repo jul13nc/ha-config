@@ -1,0 +1,44 @@
+type: grid
+cards:
+  - type: heading
+    heading: Entrée et extérieur
+    icon: mdi:doorbell-video
+  - type: picture-entity
+    entity: camera.ezviz_hpd7_bk0229016_bk0227784_direct
+    camera_image: camera.ezviz_hpd7_bk0229016_bk0227784_direct
+    camera_view: auto
+    show_name: false
+    show_state: false
+  - type: button
+    entity: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portail
+    name: Ouvrir portail
+    icon: mdi:gate
+    show_state: false
+    tap_action:
+      action: perform-action
+      perform_action: button.press
+      target:
+        entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portail
+      confirmation:
+        text: Ouvrir le portail ?
+  - type: button
+    entity: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
+    name: Ouvrir portillon
+    icon: mdi:door
+    show_state: false
+    tap_action:
+      action: perform-action
+      perform_action: button.press
+      target:
+        entity_id: button.ezviz_hpd7_bk0229016_bk0227784_ouvrir_portillon
+      confirmation:
+        text: Ouvrir le portillon ?
+  - type: tile
+    entity: sensor.th_ext_temperature
+    name: Température extérieure
+  - type: tile
+    entity: sensor.th_ext_humidity
+    name: Humidité extérieure
+  - type: weather-forecast
+    entity: weather.mionnay
+    forecast_type: hourly

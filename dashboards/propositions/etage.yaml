@@ -1,0 +1,77 @@
+- type: grid
+  cards:
+    - type: heading
+      heading: Gaëtan
+      icon: mdi:bed-outline
+    - type: tile
+      entity: sensor.th_ch_gaetan_temperature
+      name: Température
+    - type: tile
+      entity: sensor.th_ch_gaetan_humidity
+      name: Humidité
+    - type: tile
+      entity: cover.volet_roulant_gaetan
+      name: Volet Gaëtan
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+- type: grid
+  cards:
+    - type: heading
+      heading: Romain
+      icon: mdi:bed-outline
+    - type: tile
+      entity: sensor.th_ch_romain_temperature
+      name: Température
+    - type: tile
+      entity: sensor.th_ch_romain_humidity
+      name: Humidité
+    - type: tile
+      entity: cover.volet_roulant_romain
+      name: Volet Romain
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+- type: grid
+  cards:
+    - type: heading
+      heading: Bureau
+      icon: mdi:desk
+    - type: tile
+      entity: sensor.th_bureau_temperature
+      name: Température
+    - type: tile
+      entity: sensor.th_bureau_humidity
+      name: Humidité
+    - type: tile
+      entity: cover.volet_roulant_bureau
+      name: Volet bureau
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+- type: grid
+  cards:
+    - type: heading
+      heading: Salle de jeux
+      icon: mdi:toy-brick-outline
+    - type: tile
+      entity: sensor.th_salle_jeux_temperature
+      name: Température
+    - type: tile
+      entity: sensor.th_salle_jeux_humidity
+      name: Humidité
+    - type: tile
+      entity: cover.volet_roulant_salle_jeux
+      name: Volet salle de jeux
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+        - type: cover-position

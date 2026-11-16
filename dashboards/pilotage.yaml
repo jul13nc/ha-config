@@ -1,0 +1,63 @@
+title: Maison · Pilotage
+views:
+  - title: Volets
+    path: volets
+    icon: mdi:window-shutter
+    type: sections
+    max_columns: 3
+    sections: !include propositions/volets.yaml
+  - title: Lumières
+    path: lumieres
+    icon: mdi:lightbulb-group
+    type: sections
+    max_columns: 2
+    sections:
+      - !include propositions/salon.yaml
+  - title: Entretien
+    path: entretien
+    icon: mdi:robot-vacuum
+    type: sections
+    max_columns: 2
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Nettoyage
+            icon: mdi:robot-vacuum
+          - type: tile
+            entity: vacuum.robot_aspirateur
+            name: Aspirateur
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: vacuum-commands
+                commands:
+                  - start_pause
+                  - stop
+                  - return_home
+          - type: tile
+            entity: binary_sensor.washing_machine
+            name: Lave-linge
+          - type: tile
+            entity: sensor.prisemal_power
+            name: Puissance lave-linge
+          - type: history-graph
+            title: Activité du lave-linge · 12 h
+            hours_to_show: 12
+            entities:
+              - entity: binary_sensor.washing_machine
+                name: Lave-linge
+  - title: Entrée
+    path: entree
+    icon: mdi:doorbell-video
+    type: sections
+    max_columns: 1
+    sections:
+      - !include propositions/entree.yaml
+  - title: Suivi
+    path: suivi
+    icon: mdi:chart-line
+    type: sections
+    max_columns: 3
+    sections: !include propositions/suivi.yaml

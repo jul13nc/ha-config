@@ -1,0 +1,193 @@
+title: Maison · Quotidien
+views:
+  - title: Maison
+    path: accueil
+    icon: mdi:home-heart
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: La maison maintenant
+            icon: mdi:home-heart
+          - type: markdown
+            content: >-
+              {% set lights = ['light.lampetele', 'light.lampecanape',
+                'light.lampebuffet', 'light.lampeflechettes',
+                'switch.priselampesalon', 'switch.multiprisetv_l2'] %}
+              {% set covers = ['cover.volet_roulant_salon',
+                'cover.volet_roulant_parents', 'cover.volet_roulant_gaetan',
+                'cover.volet_roulant_romain', 'cover.volet_roulant_bureau',
+                'cover.volet_roulant_salle_jeux'] %}
+              {% set people = ['person.julien', 'person.virginie',
+                'person.gaetan', 'person.romain'] %}
+              **{{ expand(people) | selectattr('state', 'eq', 'home') | list | count }} / 4 à la maison**
+
+              {{ expand(lights) | selectattr('state', 'eq', 'on') | list | count }} éclairage(s) allumé(s)
+              · {{ expand(covers) | selectattr('state', 'in', ['open', 'opening']) | list | count }} volet(s) ouvert(s) ou en ouverture.
+
+              {% set missing = expand(lights + covers + people)
+                | selectattr('state', 'in', ['unknown', 'unavailable']) | list | count %}
+              {% if missing %}⚠️ {{ missing }} équipement(s) ou présence(s) sans état fiable.{% endif %}
+          - type: tile
+            entity: sensor.th_salon_temperature
+            name: Salon
+          - type: tile
+            entity: sensor.th_ext_temperature
+            name: Dehors
+          - type: weather-forecast
+            entity: weather.mionnay
+            show_forecast: false
+          - type: heading
+            heading: Accès direct
+            icon: mdi:gesture-tap
+          - type: button
+            name: Salon
+            icon: mdi:sofa
+            tap_action:
+              action: navigate
+              navigation_path: /maison-quotidien/salon
+          - type: button
+            name: Volets
+            icon: mdi:window-shutter
+            tap_action:
+              action: navigate
+              navigation_path: /maison-quotidien/volets
+          - type: button
+            name: Entrée
+            icon: mdi:doorbell-video
+            tap_action:
+              action: navigate
+              navigation_path: /maison-quotidien/entree
+          - type: button
+            name: Confort et suivi
+            icon: mdi:chart-line
+            tap_action:
+              action: navigate
+              navigation_path: /maison-quotidien/suivi
+      - type: grid
+        cards:
+          - type: heading
+            heading: Mes commandes
+            icon: mdi:star-outline
+          - type: button
+            name: Ambiance TV
+            icon: mdi:television-ambient-light
+            tap_action:
+              action: perform-action
+              perform_action: scene.turn_on
+              target:
+                entity_id: scene.lumiere_tv_nocturne
+          - type: button
+            name: Éteindre éclairages
+            icon: mdi:lightbulb-group-off
+            tap_action:
+              action: perform-action
+              perform_action: homeassistant.turn_off
+              target:
+                entity_id:
+                  - light.lampetele
+                  - light.lampecanape
+                  - light.lampebuffet
+                  - light.lampeflechettes
+                  - switch.priselampesalon
+                  - switch.multiprisetv_l2
+          - type: tile
+            entity: cover.volet_roulant_salon
+            name: Volet salon
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: cover-open-close
+              - type: cover-position
+          - type: tile
+            entity: input_select.modevolets
+            name: Automatisation des volets
+            icon: mdi:window-shutter-cog
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: select-options
+          - type: tile
+            entity: vacuum.robot_aspirateur
+            name: Aspirateur
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: vacuum-commands
+                commands:
+                  - start_pause
+                  - stop
+                  - return_home
+          - type: tile
+            entity: fan.salon_ventilosalon
+            name: Ventilateur salon
+            tap_action:
+              action: toggle
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: fan-speed
+      - type: grid
+        cards:
+          - type: heading
+            heading: Vie de famille
+            icon: mdi:account-group
+          - type: tile
+            entity: person.julien
+            name: Julien
+          - type: tile
+            entity: person.virginie
+            name: Virginie
+          - type: tile
+            entity: person.gaetan
+            name: Gaëtan
+          - type: tile
+            entity: person.romain
+            name: Romain
+          - type: markdown
+            title: Aujourd’hui
+            content: >-
+              {{ state_attr('sensor.evenements_du_jour', 'agenda')
+                or '_Agenda indisponible._' }}
+          - type: tile
+            entity: binary_sensor.washing_machine
+            name: Lave-linge
+          - type: tile
+            entity: sensor.prisemal_power
+            name: Puissance lave-linge
+  - title: Salon
+    path: salon
+    icon: mdi:sofa
+    subview: true
+    type: sections
+    max_columns: 2
+    sections:
+      - !include propositions/salon.yaml
+  - title: Volets
+    path: volets
+    icon: mdi:window-shutter
+    subview: true
+    type: sections
+    max_columns: 3
+    sections: !include propositions/volets.yaml
+  - title: Entrée
+    path: entree
+    icon: mdi:doorbell-video
+    subview: true
+    type: sections
+    max_columns: 1
+    sections:
+      - !include propositions/entree.yaml
+  - title: Confort et suivi
+    path: suivi
+    icon: mdi:chart-line
+    subview: true
+    type: sections
+    max_columns: 3
+    sections: !include propositions/suivi.yaml

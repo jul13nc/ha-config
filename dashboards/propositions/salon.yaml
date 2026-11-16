@@ -1,0 +1,103 @@
+# Section partagée : commandes identiques dans les trois propositions.
+type: grid
+cards:
+  - type: heading
+    heading: Salon
+    icon: mdi:sofa
+  - type: tile
+    entity: sensor.th_salon_temperature
+    name: Température
+  - type: tile
+    entity: sensor.th_salon_humidity
+    name: Humidité
+  - type: button
+    name: Ambiance TV
+    icon: mdi:television-ambient-light
+    tap_action:
+      action: perform-action
+      perform_action: scene.turn_on
+      target:
+        entity_id: scene.lumiere_tv_nocturne
+  - type: button
+    name: Éteindre éclairages
+    icon: mdi:lightbulb-group-off
+    tap_action:
+      action: perform-action
+      perform_action: homeassistant.turn_off
+      target:
+        entity_id:
+          - light.lampetele
+          - light.lampecanape
+          - light.lampebuffet
+          - light.lampeflechettes
+          - switch.priselampesalon
+          - switch.multiprisetv_l2
+  - type: tile
+    entity: light.lampetele
+    name: Télé
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+    features:
+      - type: light-brightness
+  - type: tile
+    entity: light.lampecanape
+    name: Canapé
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+    features:
+      - type: light-brightness
+  - type: tile
+    entity: light.lampebuffet
+    name: Buffet
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+    features:
+      - type: light-brightness
+  - type: tile
+    entity: light.lampeflechettes
+    name: Fléchettes
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+    features:
+      - type: light-brightness
+  - type: tile
+    entity: switch.priselampesalon
+    name: Lampe sur prise
+    icon: mdi:lamp
+    tap_action:
+      action: toggle
+  - type: tile
+    entity: switch.multiprisetv_l2
+    name: Arrière TV
+    icon: mdi:television-ambient-light
+    tap_action:
+      action: toggle
+  - type: tile
+    entity: fan.salon_ventilosalon
+    name: Ventilateur
+    tap_action:
+      action: toggle
+    grid_options:
+      columns: 12
+      rows: auto
+    features:
+      - type: fan-speed
+  - type: tile
+    entity: cover.volet_roulant_salon
+    name: Volet salon
+    grid_options:
+      columns: 12
+      rows: auto
+    features:
+      - type: cover-open-close
+      - type: cover-position
+  - type: media-control
+    entity: media_player.freebox_player_pop_2

@@ -1,0 +1,142 @@
+- type: grid
+  cards:
+    - type: heading
+      heading: Commandes groupées
+      icon: mdi:window-shutter-cog
+    - type: tile
+      entity: input_select.modevolets
+      name: Mode des volets
+      icon: mdi:window-shutter-cog
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: select-options
+    - type: markdown
+      content: >-
+        Les commandes manuelles ne changent pas le mode sélectionné.
+        Choisir **Manuel** pour suspendre la gestion automatique liée au mode.
+        La fermeture indépendante au lever du jour reste active.
+    - type: button
+      name: Tout ouvrir
+      icon: mdi:window-shutter-open
+      tap_action:
+        action: perform-action
+        perform_action: cover.open_cover
+        target:
+          entity_id:
+            - cover.volet_roulant_salon
+            - cover.volet_roulant_parents
+            - cover.volet_roulant_gaetan
+            - cover.volet_roulant_romain
+            - cover.volet_roulant_bureau
+            - cover.volet_roulant_salle_jeux
+    - type: button
+      name: Tout fermer
+      icon: mdi:window-shutter
+      tap_action:
+        action: perform-action
+        perform_action: cover.close_cover
+        target:
+          entity_id:
+            - cover.volet_roulant_salon
+            - cover.volet_roulant_parents
+            - cover.volet_roulant_gaetan
+            - cover.volet_roulant_romain
+            - cover.volet_roulant_bureau
+            - cover.volet_roulant_salle_jeux
+    - type: button
+      name: Tout arrêter
+      icon: mdi:stop-circle-outline
+      grid_options:
+        columns: 12
+        rows: auto
+      tap_action:
+        action: perform-action
+        perform_action: cover.stop_cover
+        target:
+          entity_id:
+            - cover.volet_roulant_salon
+            - cover.volet_roulant_parents
+            - cover.volet_roulant_gaetan
+            - cover.volet_roulant_romain
+            - cover.volet_roulant_bureau
+            - cover.volet_roulant_salle_jeux
+    - type: tile
+      entity: cover.volets_etage
+      name: Tout l’étage
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+- type: grid
+  cards:
+    - type: heading
+      heading: Rez-de-chaussée
+      icon: mdi:home-floor-0
+    - type: tile
+      entity: cover.volet_roulant_salon
+      name: Salon
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+        - type: cover-position
+    - type: tile
+      entity: cover.volet_roulant_parents
+      name: Parents
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+        - type: cover-position
+    - type: heading
+      heading: Soleil sur les façades
+      icon: mdi:white-balance-sunny
+    - type: tile
+      entity: binary_sensor.soleil_face_est
+      name: Est
+    - type: tile
+      entity: binary_sensor.soleil_face_ouest
+      name: Ouest
+- type: grid
+  cards:
+    - type: heading
+      heading: Étage
+      icon: mdi:home-floor-1
+    - type: tile
+      entity: cover.volet_roulant_gaetan
+      name: Gaëtan
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+    - type: tile
+      entity: cover.volet_roulant_romain
+      name: Romain
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+    - type: tile
+      entity: cover.volet_roulant_bureau
+      name: Bureau
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+    - type: tile
+      entity: cover.volet_roulant_salle_jeux
+      name: Salle de jeux
+      grid_options:
+        columns: 12
+        rows: auto
+      features:
+        - type: cover-open-close
+        - type: cover-position

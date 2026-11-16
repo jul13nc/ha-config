@@ -60,6 +60,24 @@ lovelace:
       icon: mdi:cellphone
       show_in_sidebar: true
       filename: dashboards/maison-mobile.yaml
+    maison-quotidien:
+      mode: yaml
+      title: Maison · Quotidien
+      icon: mdi:home-heart
+      show_in_sidebar: true
+      filename: dashboards/quotidien.yaml
+    maison-pieces:
+      mode: yaml
+      title: Maison · Pièces
+      icon: mdi:floor-plan
+      show_in_sidebar: true
+      filename: dashboards/pieces.yaml
+    maison-pilotage:
+      mode: yaml
+      title: Maison · Pilotage
+      icon: mdi:tune-variant
+      show_in_sidebar: true
+      filename: dashboards/pilotage.yaml
 
 calendar:
  - platform: caldav
