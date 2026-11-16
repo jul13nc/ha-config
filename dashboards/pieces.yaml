@@ -1,8 +1,8 @@
 title: Maison · Pièces
 views:
-  - title: RDC
+  - title: Maison
     path: rdc
-    icon: mdi:home-floor-0
+    icon: mdi:home
     type: sections
     max_columns: 3
     sections:
@@ -13,6 +13,44 @@ views:
             icon: mdi:window-shutter
           - !include propositions/tout-ouvrir.yaml
           - !include propositions/tout-fermer.yaml
+          - type: tile
+            entity: input_select.modevolets
+            name: Mode des volets
+            icon: mdi:window-shutter-cog
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: select-options
+      - !include propositions/entree.yaml
+      - type: grid
+        cards:
+          - type: heading
+            heading: Famille et agenda
+            icon: mdi:account-group
+          - type: tile
+            entity: person.julien
+            name: Julien
+          - type: tile
+            entity: person.virginie
+            name: Virginie
+          - type: tile
+            entity: person.gaetan
+            name: Gaetan
+          - type: tile
+            entity: person.romain
+            name: Romain
+          - type: markdown
+            title: Aujourd’hui
+            content: >-
+              {{ state_attr('sensor.evenements_du_jour', 'agenda')
+                or '_Agenda indisponible._' }}
+          - type: calendar
+            initial_view: listWeek
+            entities:
+              - calendar.famille
+              - calendar.julien
+              - calendar.virginie
       - !include propositions/salon.yaml
       - type: grid
         cards:
@@ -40,6 +78,8 @@ views:
             features:
               - type: cover-open-close
               - type: cover-position
+      - type: grid
+        cards:
           - type: heading
             heading: Garage et entretien
             icon: mdi:garage
@@ -73,16 +113,104 @@ views:
                   - start_pause
                   - stop
                   - return_home
-      - !include propositions/entree.yaml
-  - title: Étage
-    path: etage
-    icon: mdi:home-floor-1
-    type: sections
-    max_columns: 2
-    sections: !include propositions/etage.yaml
-  - title: Suivi
-    path: suivi
-    icon: mdi:chart-line
-    type: sections
-    max_columns: 3
-    sections: !include propositions/suivi.yaml
+      - type: grid
+        cards:
+          - type: heading
+            heading: Gaetan
+            icon: mdi:bed-outline
+          - type: glance
+            show_name: false
+            columns: 2
+            entities:
+              - entity: sensor.th_ch_gaetan_temperature
+                icon: mdi:thermometer
+                tap_action:
+                  action: more-info
+              - entity: sensor.th_ch_gaetan_humidity
+                icon: mdi:water-percent
+                tap_action:
+                  action: more-info
+          - type: tile
+            entity: cover.volet_roulant_gaetan
+            name: Volet Gaetan
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: cover-open-close
+      - type: grid
+        cards:
+          - type: heading
+            heading: Romain
+            icon: mdi:bed-outline
+          - type: glance
+            show_name: false
+            columns: 2
+            entities:
+              - entity: sensor.th_ch_romain_temperature
+                icon: mdi:thermometer
+                tap_action:
+                  action: more-info
+              - entity: sensor.th_ch_romain_humidity
+                icon: mdi:water-percent
+                tap_action:
+                  action: more-info
+          - type: tile
+            entity: cover.volet_roulant_romain
+            name: Volet Romain
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: cover-open-close
+      - type: grid
+        cards:
+          - type: heading
+            heading: Bureau
+            icon: mdi:desk
+          - type: glance
+            show_name: false
+            columns: 2
+            entities:
+              - entity: sensor.th_bureau_temperature
+                icon: mdi:thermometer
+                tap_action:
+                  action: more-info
+              - entity: sensor.th_bureau_humidity
+                icon: mdi:water-percent
+                tap_action:
+                  action: more-info
+          - type: tile
+            entity: cover.volet_roulant_bureau
+            name: Volet bureau
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: cover-open-close
+      - type: grid
+        cards:
+          - type: heading
+            heading: Salle de jeux
+            icon: mdi:toy-brick-outline
+          - type: glance
+            show_name: false
+            columns: 2
+            entities:
+              - entity: sensor.th_salle_jeux_temperature
+                icon: mdi:thermometer
+                tap_action:
+                  action: more-info
+              - entity: sensor.th_salle_jeux_humidity
+                icon: mdi:water-percent
+                tap_action:
+                  action: more-info
+          - type: tile
+            entity: cover.volet_roulant_salle_jeux
+            name: Volet salle de jeux
+            grid_options:
+              columns: 12
+              rows: auto
+            features:
+              - type: cover-open-close
+              - type: cover-position

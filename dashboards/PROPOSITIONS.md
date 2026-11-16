@@ -6,7 +6,7 @@ adaptatives : côte à côte sur grand écran, empilées sur smartphone.
 | Proposition | Adresse | Organisation |
 | --- | --- | --- |
 | Maison · Quotidien | `/maison-quotidien/accueil` | Synthèse maison, favoris, famille et agenda ; détails en sous-vues |
-| Maison · Pièces | `/maison-pieces/rdc` | Commandes globales en tête du RDC, puis équipements par pièce ; onglets Étage et Suivi |
+| Maison · Pièces | `/maison-pieces/rdc` | Une seule page : commandes globales, portail/portillon, famille et agenda, puis toutes les pièces |
 | Maison · Pilotage | `/maison-pilotage/volets` | Commandes par fonction : Volets, Lumières, Entretien, Entrée et Suivi |
 
 ## Ajustements communs
@@ -28,9 +28,15 @@ adaptatives : côte à côte sur grand écran, empilées sur smartphone.
 
 ## Choix conseillé
 
-Commencer par **Quotidien** pour une vision rapide et les commandes habituelles.
-Choisir **Pièces** pour retrouver les équipements par emplacement, ou **Pilotage**
-pour privilégier les commandes par fonction.
+Le dashboard **Pièces** rassemble maintenant la maison sur une seule page :
+température/humidité pour chaque pièce équipée, commandes de ses volets et de ses
+éclairages disponibles. Le salon comprend les quatre lampes, les deux prises
+d’éclairage, l’extinction groupée et l’ambiance TV. Aucun éclairage d’une autre
+pièce n’est référencé dans la configuration du dépôt.
+
+Les présences des quatre membres de la famille, l’agenda du jour et celui de la
+semaine restent visibles sur cette même page, ainsi que les commandes globales
+des six volets et celles du portail et du portillon, sans image du visiophone.
 
 Après déploiement, recharger la page du dashboard. La disponibilité des entités
 et le rendu mobile sont à confirmer sur l’instance Home Assistant.
